@@ -28,8 +28,20 @@ namespace TechShopManagement
         {
             InitializeComponent();
             SqlServerStart();
+            watch2();
+        }
+        private void watch2()
+        {
+            timer2.Start();
+            this.labelTime.Text = "Time: " + DateTime.Now.ToLongTimeString();
+            this.labelDate.Text = "Date: " + DateTime.Now.ToLongDateString();
         }
 
-
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            this.labelTime.Text = "Time: " + DateTime.Now.ToLongTimeString();
+            this.labelDate.Text = "Date:  " + DateTime.Now.ToLongDateString();
+            timer2.Start();
+        }
     }
 }

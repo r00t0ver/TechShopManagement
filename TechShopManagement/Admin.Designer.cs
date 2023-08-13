@@ -35,6 +35,7 @@
             this.employeeManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.customerManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.revenueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelAdmin = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -46,16 +47,16 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 783);
+            this.panel1.Size = new System.Drawing.Size(252, 783);
             this.panel1.TabIndex = 0;
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.menuStrip1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(200, 0);
+            this.panel2.Location = new System.Drawing.Point(252, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1122, 60);
+            this.panel2.Size = new System.Drawing.Size(1070, 60);
             this.panel2.TabIndex = 1;
             // 
             // menuStrip1
@@ -66,10 +67,11 @@
             this.graphToolStripMenuItem,
             this.employeeManagementToolStripMenuItem,
             this.productManagementToolStripMenuItem,
-            this.customerManagementToolStripMenuItem});
+            this.customerManagementToolStripMenuItem,
+            this.revenueToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1122, 60);
+            this.menuStrip1.Size = new System.Drawing.Size(1070, 60);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -104,12 +106,19 @@
             this.customerManagementToolStripMenuItem.Text = "Customer Management";
             this.customerManagementToolStripMenuItem.Click += new System.EventHandler(this.customerManagementToolStripMenuItem_Click);
             // 
+            // revenueToolStripMenuItem
+            // 
+            this.revenueToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.revenueToolStripMenuItem.Name = "revenueToolStripMenuItem";
+            this.revenueToolStripMenuItem.Size = new System.Drawing.Size(82, 56);
+            this.revenueToolStripMenuItem.Text = "Revenue";
+            // 
             // panelAdmin
             // 
             this.panelAdmin.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelAdmin.Location = new System.Drawing.Point(200, 60);
+            this.panelAdmin.Location = new System.Drawing.Point(252, 60);
             this.panelAdmin.Name = "panelAdmin";
-            this.panelAdmin.Size = new System.Drawing.Size(1122, 723);
+            this.panelAdmin.Size = new System.Drawing.Size(1070, 723);
             this.panelAdmin.TabIndex = 2;
             // 
             // Admin
@@ -141,5 +150,6 @@
         private System.Windows.Forms.ToolStripMenuItem productManagementToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem customerManagementToolStripMenuItem;
         private System.Windows.Forms.Panel panelAdmin;
+        private System.Windows.Forms.ToolStripMenuItem revenueToolStripMenuItem;
     }
 }

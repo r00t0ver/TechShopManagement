@@ -55,22 +55,28 @@
     <Compile Include="Admin.Designer.cs">
       <DependentUpon>Admin.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdminCustomer.cs">
+    <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdminCustomer.Designer.cs">
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Unused\AdminCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Unused\AdminCustomer.Designer.cs">
       <DependentUpon>AdminCustomer.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdminEmployee.cs">
+    <Compile Include="Unused\AdminEmployee.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdminEmployee.Designer.cs">
+    <Compile Include="Unused\AdminEmployee.Designer.cs">
       <DependentUpon>AdminEmployee.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdminProduct.cs">
+    <Compile Include="Unused\AdminProduct.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdminProduct.Designer.cs">
+    <Compile Include="Unused\AdminProduct.Designer.cs">
       <DependentUpon>AdminProduct.cs</DependentUpon>
     </Compile>
     <Compile Include="ControlAdminCustomer.cs">
@@ -108,13 +114,16 @@
     <EmbeddedResource Include="Admin.resx">
       <DependentUpon>Admin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdminCustomer.resx">
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Unused\AdminCustomer.resx">
       <DependentUpon>AdminCustomer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdminEmployee.resx">
+    <EmbeddedResource Include="Unused\AdminEmployee.resx">
       <DependentUpon>AdminEmployee.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdminProduct.resx">
+    <EmbeddedResource Include="Unused\AdminProduct.resx">
       <DependentUpon>AdminProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ControlAdminCustomer.resx">
@@ -137,6 +146,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Seller.resx">
       <DependentUpon>Seller.cs</DependentUpon>
@@ -153,6 +163,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cross-eye1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eye1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notShow.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

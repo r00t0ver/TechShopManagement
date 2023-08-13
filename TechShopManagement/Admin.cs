@@ -48,5 +48,7 @@ namespace TechShopManagement
             customer.BringToFront();
             customer.Show();
         }
+
+
     }
 }

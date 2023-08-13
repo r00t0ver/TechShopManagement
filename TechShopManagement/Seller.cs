@@ -79,5 +79,11 @@ namespace TechShopManagement
             this.labelDate.Text = "Date:  " + DateTime.Now.ToLongDateString();
             timer1.Start();
         }
+
+        private void panel7_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
     }
 }

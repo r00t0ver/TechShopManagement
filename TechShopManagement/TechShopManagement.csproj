@@ -73,6 +73,24 @@
     <Compile Include="AdminProduct.Designer.cs">
       <DependentUpon>AdminProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="ControlAdminCustomer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlAdminCustomer.Designer.cs">
+      <DependentUpon>ControlAdminCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ControlAdminEmployee.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlAdminEmployee.Designer.cs">
+      <DependentUpon>ControlAdminEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ControlAdminProduct.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlAdminProduct.Designer.cs">
+      <DependentUpon>ControlAdminProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProductManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +116,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdminProduct.resx">
       <DependentUpon>AdminProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlAdminCustomer.resx">
+      <DependentUpon>ControlAdminCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlAdminEmployee.resx">
+      <DependentUpon>ControlAdminEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlAdminProduct.resx">
+      <DependentUpon>ControlAdminProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProductManager.resx">
       <DependentUpon>ProductManager.cs</DependentUpon>

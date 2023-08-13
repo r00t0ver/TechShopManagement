@@ -14,3 +14,6 @@ E:\CS project 2\TechShopManagement\TechShopManagement\obj\Debug\TechShopManageme
 E:\CS project 2\TechShopManagement\TechShopManagement\obj\Debug\TechShopManagement.AdminEmployee.resources
 E:\CS project 2\TechShopManagement\TechShopManagement\obj\Debug\TechShopManagement.AdminProduct.resources
 E:\CS project 2\TechShopManagement\TechShopManagement\obj\Debug\TechShopManagement.AdminCustomer.resources
+E:\CS project 2\TechShopManagement\TechShopManagement\obj\Debug\TechShopManagement.ControlAdminCustomer.resources
+E:\CS project 2\TechShopManagement\TechShopManagement\obj\Debug\TechShopManagement.ControlAdminEmployee.resources
+E:\CS project 2\TechShopManagement\TechShopManagement\obj\Debug\TechShopManagement.ControlAdminProduct.resources

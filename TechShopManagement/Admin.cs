@@ -13,12 +13,7 @@ namespace TechShopManagement
     
     public partial class Admin : Form
     {
-        private void start()
-        {
-            AdminEmployee employee = new AdminEmployee();
-            panelAdmin.Controls.Add(employee);
-            employee.Show();
-        }
+
         public Admin()
         {
 
@@ -26,9 +21,32 @@ namespace TechShopManagement
             
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void employeeManagementToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            start();
+            ControlAdminEmployee emp=new ControlAdminEmployee();
+            panelAdmin.Controls.Add(emp);
+            emp.Dock = DockStyle.Fill;
+            emp.BringToFront();
+            emp.Show(); 
+
+        }
+
+        private void productManagementToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ControlAdminProduct productManager = new ControlAdminProduct();
+            panelAdmin.Controls.Add(productManager);
+            productManager.Dock = DockStyle.Fill;
+            productManager.BringToFront();
+            productManager.Show();
+        }
+
+        private void customerManagementToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ControlAdminCustomer customer = new ControlAdminCustomer();
+            panelAdmin.Controls.Add(customer);
+            customer.Dock = DockStyle.Fill;
+            customer.BringToFront();
+            customer.Show();
         }
     }
 }

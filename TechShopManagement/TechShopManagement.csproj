@@ -55,6 +55,7 @@
     <Compile Include="Admin.Designer.cs">
       <DependentUpon>Admin.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataBaseAccess.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,13 +166,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\cross-eye1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\eye1.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\notShow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\show.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

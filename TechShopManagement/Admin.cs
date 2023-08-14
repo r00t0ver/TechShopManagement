@@ -13,7 +13,7 @@ namespace TechShopManagement
     
     public partial class Admin : Form
     {
-
+        private DataBaseAccess DBA { get; set; }
         public Admin()
         {
 
@@ -27,7 +27,9 @@ namespace TechShopManagement
             panelAdmin.Controls.Add(emp);
             emp.Dock = DockStyle.Fill;
             emp.BringToFront();
-            emp.Show(); 
+            emp.Show();
+            
+           
 
         }
 

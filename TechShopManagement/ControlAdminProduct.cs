@@ -12,9 +12,45 @@ namespace TechShopManagement
 {
     public partial class ControlAdminProduct : UserControl
     {
+        private  DataBaseAccess dba { get; set; }
+        private void show()
+        {
+            try
+            {
+                var sql = "select * from ProductList";
+                DataSet ds = this.dba.ExecuteQuery(sql);
+                this.dgvAdminProduct.DataSource = ds.Tables[0];
+                
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("error " + ex.Message);
+            }
+            this.dgvAdminProduct.ClearSelection();
+        }
         public ControlAdminProduct()
         {
             InitializeComponent();
+            this.dba=new DataBaseAccess();
+            show();
+            
+
+        }
+
+        private void ControlAdminProduct_Load(object sender, EventArgs e)
+        {
+            this.dgvAdminProduct.ClearSelection();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.dgvAdminProduct.ClearSelection();
         }
     }
 }

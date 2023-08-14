@@ -37,6 +37,9 @@
             this.customerManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.revenueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelAdmin = new System.Windows.Forms.Panel();
+            this.dailyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.montlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.yearlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -47,16 +50,16 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(252, 783);
+            this.panel1.Size = new System.Drawing.Size(227, 783);
             this.panel1.TabIndex = 0;
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.menuStrip1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(252, 0);
+            this.panel2.Location = new System.Drawing.Point(227, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1070, 60);
+            this.panel2.Size = new System.Drawing.Size(1095, 60);
             this.panel2.TabIndex = 1;
             // 
             // menuStrip1
@@ -71,7 +74,7 @@
             this.revenueToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1070, 60);
+            this.menuStrip1.Size = new System.Drawing.Size(1095, 60);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -79,8 +82,8 @@
             // 
             this.graphToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.graphToolStripMenuItem.Name = "graphToolStripMenuItem";
-            this.graphToolStripMenuItem.Size = new System.Drawing.Size(65, 56);
-            this.graphToolStripMenuItem.Text = "Graph";
+            this.graphToolStripMenuItem.Size = new System.Drawing.Size(64, 56);
+            this.graphToolStripMenuItem.Text = "Home";
             // 
             // employeeManagementToolStripMenuItem
             // 
@@ -108,6 +111,10 @@
             // 
             // revenueToolStripMenuItem
             // 
+            this.revenueToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.dailyToolStripMenuItem,
+            this.montlyToolStripMenuItem,
+            this.yearlyToolStripMenuItem});
             this.revenueToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.revenueToolStripMenuItem.Name = "revenueToolStripMenuItem";
             this.revenueToolStripMenuItem.Size = new System.Drawing.Size(82, 56);
@@ -116,10 +123,28 @@
             // panelAdmin
             // 
             this.panelAdmin.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelAdmin.Location = new System.Drawing.Point(252, 60);
+            this.panelAdmin.Location = new System.Drawing.Point(227, 60);
             this.panelAdmin.Name = "panelAdmin";
-            this.panelAdmin.Size = new System.Drawing.Size(1070, 723);
+            this.panelAdmin.Size = new System.Drawing.Size(1095, 723);
             this.panelAdmin.TabIndex = 2;
+            // 
+            // dailyToolStripMenuItem
+            // 
+            this.dailyToolStripMenuItem.Name = "dailyToolStripMenuItem";
+            this.dailyToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.dailyToolStripMenuItem.Text = "Daily";
+            // 
+            // montlyToolStripMenuItem
+            // 
+            this.montlyToolStripMenuItem.Name = "montlyToolStripMenuItem";
+            this.montlyToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.montlyToolStripMenuItem.Text = "Montly";
+            // 
+            // yearlyToolStripMenuItem
+            // 
+            this.yearlyToolStripMenuItem.Name = "yearlyToolStripMenuItem";
+            this.yearlyToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.yearlyToolStripMenuItem.Text = "Yearly";
             // 
             // Admin
             // 
@@ -151,5 +176,8 @@
         private System.Windows.Forms.ToolStripMenuItem customerManagementToolStripMenuItem;
         private System.Windows.Forms.Panel panelAdmin;
         private System.Windows.Forms.ToolStripMenuItem revenueToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dailyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem montlyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem yearlyToolStripMenuItem;
     }
 }

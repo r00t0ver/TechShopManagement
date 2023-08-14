@@ -31,16 +31,16 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.imgPass = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.txtPass = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.imgPass = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imgPass)).BeginInit();
@@ -56,7 +56,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(881, 499);
+            this.panel1.Size = new System.Drawing.Size(943, 544);
             this.panel1.TabIndex = 0;
             // 
             // panel2
@@ -74,10 +74,55 @@
             this.panel2.Controls.Add(this.textBox1);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.label8);
-            this.panel2.Location = new System.Drawing.Point(63, 71);
+            this.panel2.Location = new System.Drawing.Point(94, 94);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(731, 344);
             this.panel2.TabIndex = 0;
+            // 
+            // imgPass
+            // 
+            this.imgPass.BackColor = System.Drawing.Color.White;
+            this.imgPass.Image = global::TechShopManagement.Properties.Resources.show;
+            this.imgPass.Location = new System.Drawing.Point(668, 144);
+            this.imgPass.Name = "imgPass";
+            this.imgPass.Size = new System.Drawing.Size(29, 23);
+            this.imgPass.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.imgPass.TabIndex = 12;
+            this.imgPass.TabStop = false;
+            this.imgPass.MouseDown += new System.Windows.Forms.MouseEventHandler(this.imgPass_MouseDown);
+            this.imgPass.MouseUp += new System.Windows.Forms.MouseEventHandler(this.imgPass_MouseUp);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(263, 341);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 11;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(391, 142);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(28, 26);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 10;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(393, 85);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(28, 26);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 10;
+            this.pictureBox1.TabStop = false;
             // 
             // button1
             // 
@@ -96,7 +141,7 @@
             this.button3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button3.Location = new System.Drawing.Point(559, 195);
+            this.button3.Location = new System.Drawing.Point(574, 195);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(123, 30);
             this.button3.TabIndex = 9;
@@ -146,56 +191,11 @@
             this.label8.TabIndex = 8;
             this.label8.Text = "Passwrord";
             // 
-            // imgPass
-            // 
-            this.imgPass.BackColor = System.Drawing.Color.White;
-            this.imgPass.Image = global::TechShopManagement.Properties.Resources.show;
-            this.imgPass.Location = new System.Drawing.Point(670, 144);
-            this.imgPass.Name = "imgPass";
-            this.imgPass.Size = new System.Drawing.Size(29, 23);
-            this.imgPass.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.imgPass.TabIndex = 12;
-            this.imgPass.TabStop = false;
-            this.imgPass.MouseDown += new System.Windows.Forms.MouseEventHandler(this.imgPass_MouseDown);
-            this.imgPass.MouseUp += new System.Windows.Forms.MouseEventHandler(this.imgPass_MouseUp);
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(263, 341);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 11;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(391, 142);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(28, 26);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 10;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(393, 85);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(28, 26);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 10;
-            this.pictureBox1.TabStop = false;
-            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(881, 499);
+            this.ClientSize = new System.Drawing.Size(943, 544);
             this.Controls.Add(this.panel1);
             this.Name = "Login";
             this.Text = "Login";

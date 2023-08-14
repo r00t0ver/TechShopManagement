@@ -16,7 +16,7 @@ namespace TechShopManagement
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Admin());
+            Application.Run(new Seller());
         }
     }
 }

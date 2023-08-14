@@ -13,7 +13,7 @@ namespace TechShopManagement
     public partial class ControlAdminProduct : UserControl
     {
         private  DataBaseAccess dba { get; set; }
-        private void show()
+        private void Show()
         {
             try
             {
@@ -33,7 +33,7 @@ namespace TechShopManagement
         {
             InitializeComponent();
             this.dba=new DataBaseAccess();
-            show();
+            this.Show();
             
 
         }

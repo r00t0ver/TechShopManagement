@@ -1,12 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Runtime.Remoting.Lifetime;
 using System.Windows.Forms;
 
 namespace TechShopManagement
 {
     public partial class Seller : Form
     {
+        private DataSet ds;
         private DataBaseAccess dba { set; get; }
         private void show()
         {
@@ -14,21 +17,21 @@ namespace TechShopManagement
             {
                 var sql = "select * from ProductList";
                 DataSet ds = this.dba.ExecuteQuery(sql);
-                this.dgvAvailableProduct.DataSource = ds.Tables[0];
-                this.dgvAvailableProduct.ClearSelection();
+                this.dvgAvailableProduct.DataSource = ds.Tables[0];               
 
             }
             catch (Exception ex)
             {
                 MessageBox.Show("error " + ex.Message);
             }
+            this.dvgAvailableProduct.ClearSelection();
         }
         private void ShowCart()
         {
             try
             {
                 var sql = "select * from ProductCartList";
-                DataSet ds = this.dba.ExecuteQuery(sql);
+                this.ds = this.dba.ExecuteQuery(sql);
                 this.dvgProductCartList.DataSource = ds.Tables[0];
  
 
@@ -37,6 +40,7 @@ namespace TechShopManagement
             {
                 MessageBox.Show("error " + ex.Message);
             }
+            this.dvgProductCartList.ClearSelection();
         }
 
 
@@ -73,23 +77,18 @@ namespace TechShopManagement
 
         }*/
 
-        private void ckDiscount_CheckStateChanged(object sender, EventArgs e)
-        {
-            if (ckDiscount.Checked) { this.txtDiscount.Enabled = true; }
-            else { this.txtDiscount.Enabled = false; }
 
-        }
 
         private void txtSearchProduct_TextChanged(object sender, EventArgs e)
         {
             var sql = @"select * from ProductList where ProductName like '%"+this.txtSearchProduct.Text+"%';";
             DataSet ds = this.dba.ExecuteQuery(sql);
-            this.dgvAvailableProduct.DataSource = ds.Tables[0];
+            this.dvgAvailableProduct.DataSource = ds.Tables[0];
         }
 
         private void btnClearSelection_Click(object sender, EventArgs e)
         {
-            this.dgvAvailableProduct.ClearSelection();
+            this.dvgAvailableProduct.ClearSelection();
         }
 
 
@@ -110,14 +109,14 @@ namespace TechShopManagement
         {
             try
             {
-                this.txtProductId.Text = this.dgvAvailableProduct.CurrentRow.Cells["ProductId"].Value.ToString();
-                this.txtBrandName.Text = this.dgvAvailableProduct.CurrentRow.Cells["BrandName"].Value.ToString();
-                this.txtProductCategory.Text = this.dgvAvailableProduct.CurrentRow.Cells["ProductCategory"].Value.ToString();
-                this.txtProductName.Text = this.dgvAvailableProduct.CurrentRow.Cells["ProductName"].Value.ToString();
-                this.txtWarranty.Text = this.dgvAvailableProduct.CurrentRow.Cells["Warranty"].Value.ToString();
-                this.txtProductPrice.Text = this.dgvAvailableProduct.CurrentRow.Cells["Price"].Value.ToString();
+                this.txtProductId.Text = this.dvgAvailableProduct.CurrentRow.Cells["ProductId"].Value.ToString();
+                this.txtBrandName.Text = this.dvgAvailableProduct.CurrentRow.Cells["BrandName"].Value.ToString();
+                this.txtProductCategory.Text = this.dvgAvailableProduct.CurrentRow.Cells["ProductCategory"].Value.ToString();
+                this.txtProductName.Text = this.dvgAvailableProduct.CurrentRow.Cells["ProductName"].Value.ToString();
+                this.txtWarranty.Text = this.dvgAvailableProduct.CurrentRow.Cells["Warranty"].Value.ToString();
+                this.txtProductPrice.Text = this.dvgAvailableProduct.CurrentRow.Cells["Price"].Value.ToString();
                 this.txtProductQuantity.Text ="1";
-                this.txtDescription.Text = this.dgvAvailableProduct.CurrentRow.Cells["Description"].Value.ToString();
+                this.txtDescription.Text = this.dvgAvailableProduct.CurrentRow.Cells["Description"].Value.ToString();
             }
             catch(Exception ex) { MessageBox.Show("error: " + ex.Message); }
             
@@ -149,24 +148,29 @@ namespace TechShopManagement
         {
             var sql = "select * from ProductCartList";
             DataSet ds = this.dba.ExecuteQuery(sql);
-            //MessageBox.Show(this.dgvAvailableProduct.CurrentRow.Cells["ProductId"].Value.ToString());
-            string id = this.dgvAvailableProduct.CurrentRow.Cells["ProductId"].Value.ToString();
+
+            string id = this.dvgAvailableProduct.CurrentRow.Cells["ProductId"].Value.ToString();
 
             var sqlCart = "select * from ProductCartList where ProductId='" + id+"'";
             DataSet dsCart = this.dba.ExecuteQuery(sqlCart);
             int row = dsCart.Tables[0].Rows.Count;
-            //MessageBox.Show(row.ToString());
+
             try
             {
-
+                
+                string quantity = this.dvgAvailableProduct.CurrentRow.Cells["Quantity"].Value.ToString();
+                int quan=Convert.ToInt32(quantity);
+                if (quan < Convert.ToInt32(this.txtProductQuantity.Text)) { MessageBox.Show("Not Enough Product ");return; }
+                if (quan >0) { this.dba.ExecuteDMLQuery("UPDATE ProductList SET Quantity = " + ((quan) - Convert.ToInt32(this.txtProductQuantity.Text)) + " WHERE ProductId='" + id + "';"); }
+                else { MessageBox.Show("No product avaible for current selection");return; }
                 if (row == 1)
                 {
                     DataSet preQ = this.dba.ExecuteQuery("select Quantity from ProductCartList where ProductId='" + id + "'");
                     string str = preQ.Tables[0].Rows[0][0].ToString();
-                    int q = Convert.ToInt32(str) + 1;
+                    int q = Convert.ToInt32(str) + Convert.ToInt32(this.txtProductQuantity.Text);
                     sql = "UPDATE ProductCartList SET Quantity =" + q + "WHERE ProductId='" + id + "';";
                     this.dba.ExecuteQuery(sql);
-                }          
+                }
                 else
                 {
 
@@ -177,8 +181,9 @@ namespace TechShopManagement
 
                 }
             }
-            catch(Exception ex) { MessageBox.Show(ex.Message); }
+            catch(Exception ex) { MessageBox.Show("First Select a Product"); }
             this.ShowCart();
+            this.show();
 
 
         }
@@ -193,5 +198,108 @@ namespace TechShopManagement
             this.dba.ExecuteQuery("delete from ProductCartList;");
             this.ShowCart();
         }
+
+
+
+        private void ckQuantity_CheckStateChanged(object sender, EventArgs e)
+        {
+            if (this.ckQuantity.Checked) { this.txtProductQuantity.Enabled = true; }
+            else { this.txtProductQuantity.Enabled = false; }
+        }
+
+
+
+        private void ckCartQuantity_CheckStateChanged_1(object sender, EventArgs e)
+        {
+            if (this.ckCartQuantity.Checked) { this.txtUpdateCartQuantity.Enabled = true; }
+            else { this.txtUpdateCartQuantity.Enabled = false; }
+        }
+
+        private void dvgProductCartList_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (this.ds.Tables[0].Rows.Count > 0)
+                {
+                    this.dvgProductCartList.DataSource = this.ds.Tables[0];
+
+                    if (this.dvgProductCartList.CurrentRow != null)
+                    {
+                        this.txtUpdateCartQuantity.Text = this.dvgProductCartList.CurrentRow.Cells[3].Value.ToString();
+                    }
+                    else
+                    {
+                        this.txtUpdateCartQuantity.Text = string.Empty;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No data available in ProductCartList.");
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the error or handle it appropriately
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+        private void btnUpdateCart_Click(object sender, EventArgs e)
+        {
+            try {
+                string id = this.dvgProductCartList.CurrentRow.Cells[0].Value.ToString();
+                if (id == "")
+                {
+                    MessageBox.Show("No data Found");
+                }
+                else
+                {
+                    int aff = this.dba.ExecuteDMLQuery("update ProductCartList set Quantity = " + this.txtUpdateCartQuantity.Text + " WHERE ProductId = '" + id + "'; ");
+                    ShowCart();
+                    MessageBox.Show("Updated");
+
+                }
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Nothing to update ("+ex.Message+")");
+            }
+
+        }
+
+        private void btnDeleteart_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string id = this.dvgProductCartList.CurrentRow.Cells[0].Value.ToString();
+                if (id == "")
+                {
+                    MessageBox.Show("No data Found");
+                }
+                else
+                {
+                    int aff = this.dba.ExecuteDMLQuery("delete from ProductCartList where ProductId = '" + id + "';");
+                    ShowCart();
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Nothing to Delete (" + ex.Message + ")");
+            }
+        }
+
+        private void Seller_Load(object sender, EventArgs e)
+        {
+            this.dvgProductCartList.ClearSelection();
+            this.dvgAvailableProduct.ClearSelection();
+        }
+
+        private void btnConfirm_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
+

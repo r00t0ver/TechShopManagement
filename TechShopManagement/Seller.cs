@@ -165,11 +165,17 @@ namespace TechShopManagement
                 else { MessageBox.Show("No product avaible for current selection");return; }
                 if (row == 1)
                 {
+                    double dtp = (Convert.ToDouble(this.txtProductPrice.Text)) * (Convert.ToDouble(this.txtProductQuantity.Text));
                     DataSet preQ = this.dba.ExecuteQuery("select Quantity from ProductCartList where ProductId='" + id + "'");
+                    DataSet preT = this.dba.ExecuteQuery("select TotalPrice from ProductCartList where ProductId='" + id + "'");
                     string str = preQ.Tables[0].Rows[0][0].ToString();
+                    string pretotal = preT.Tables[0].Rows[0][0].ToString();
+                    double TotalPrice = Convert.ToDouble(pretotal);
+
                     int q = Convert.ToInt32(str) + Convert.ToInt32(this.txtProductQuantity.Text);
-                    sql = "UPDATE ProductCartList SET Quantity =" + q + "WHERE ProductId='" + id + "';";
-                    this.dba.ExecuteQuery(sql);
+                    sql = "UPDATE ProductCartList SET Quantity ="+q+",TotalPrice = "+(TotalPrice+dtp)+"  WHERE ProductId = '"+id+"'; ";
+                    this.dba.ExecuteDMLQuery(sql);
+                    
                 }
                 else
                 {
@@ -181,9 +187,10 @@ namespace TechShopManagement
 
                 }
             }
-            catch(Exception ex) { MessageBox.Show("First Select a Product"); }
+            catch(Exception ex) { MessageBox.Show("First Select a Product "+ex.Message); }
             this.ShowCart();
             this.show();
+            this.dvgAvailableProduct.ClearSelection();
 
 
         }
@@ -209,11 +216,7 @@ namespace TechShopManagement
 
 
 
-        private void ckCartQuantity_CheckStateChanged_1(object sender, EventArgs e)
-        {
-            if (this.ckCartQuantity.Checked) { this.txtUpdateCartQuantity.Enabled = true; }
-            else { this.txtUpdateCartQuantity.Enabled = false; }
-        }
+
 
         private void dvgProductCartList_Click(object sender, EventArgs e)
         {
@@ -222,16 +225,7 @@ namespace TechShopManagement
 
                 if (this.ds.Tables[0].Rows.Count > 0)
                 {
-                    this.dvgProductCartList.DataSource = this.ds.Tables[0];
 
-                    if (this.dvgProductCartList.CurrentRow != null)
-                    {
-                        this.txtUpdateCartQuantity.Text = this.dvgProductCartList.CurrentRow.Cells[3].Value.ToString();
-                    }
-                    else
-                    {
-                        this.txtUpdateCartQuantity.Text = string.Empty;
-                    }
                 }
                 else
                 {
@@ -245,50 +239,9 @@ namespace TechShopManagement
             }
         }
 
-        private void btnUpdateCart_Click(object sender, EventArgs e)
-        {
-            try {
-                string id = this.dvgProductCartList.CurrentRow.Cells[0].Value.ToString();
-                if (id == "")
-                {
-                    MessageBox.Show("No data Found");
-                }
-                else
-                {
-                    int aff = this.dba.ExecuteDMLQuery("update ProductCartList set Quantity = " + this.txtUpdateCartQuantity.Text + " WHERE ProductId = '" + id + "'; ");
-                    ShowCart();
-                    MessageBox.Show("Updated");
 
-                }
 
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show("Nothing to update ("+ex.Message+")");
-            }
 
-        }
-
-        private void btnDeleteart_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string id = this.dvgProductCartList.CurrentRow.Cells[0].Value.ToString();
-                if (id == "")
-                {
-                    MessageBox.Show("No data Found");
-                }
-                else
-                {
-                    int aff = this.dba.ExecuteDMLQuery("delete from ProductCartList where ProductId = '" + id + "';");
-                    ShowCart();
-                }
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show("Nothing to Delete (" + ex.Message + ")");
-            }
-        }
 
         private void Seller_Load(object sender, EventArgs e)
         {
@@ -298,6 +251,62 @@ namespace TechShopManagement
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
+            Double total = 0;
+            DataSet ds = this.dba.ExecuteQuery("select TotalPrice from ProductCartList;");
+            int row = ds.Tables[0].Rows.Count;
+            int l = 0;
+            while(l<row)
+            {
+                total += Convert.ToDouble(ds.Tables[0].Rows[l][0]);
+                l++;
+            }
+            this.txtPayTotal.Text = total.ToString();
+            
+        }
+
+        private void btnDeleteSelected_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                
+                string id = this.dvgProductCartList.CurrentRow.Cells[0].Value.ToString();
+                string quan = this.dvgProductCartList.CurrentRow.Cells[3].Value.ToString();
+                string pquan = this.dvgAvailableProduct.CurrentRow.Cells[6].Value.ToString();
+                
+                int newquantity = (Convert.ToInt32(quan))+ (Convert.ToInt32(pquan));
+                MessageBox.Show("" + newquantity);
+                if (id.Length==0)
+                {
+                    MessageBox.Show("No data Found");
+                }
+                else
+                {
+                    int aff = this.dba.ExecuteDMLQuery("delete from ProductCartList where ProductId = '" + id + "';");
+                    
+                    int aff2 = this.dba.ExecuteDMLQuery("UPDATE ProductList SET Quantity=" + newquantity + " WHERE ProductId='" + id + "';");
+                    
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Nothing to Delete (" + ex.Message + ")");
+            }
+            this.ShowCart();
+            this.show();
+            
+        }
+
+        private void btnPaid_Click(object sender, EventArgs e)
+        {
+            if(rbcash.Checked||rbCredit.Checked) 
+            {
+                MessageBox.Show("Ok paid");
+            }
+            else
+            {
+                MessageBox.Show("Select a payment Method");
+            }
 
         }
     }

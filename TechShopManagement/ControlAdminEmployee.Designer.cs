@@ -419,7 +419,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(432, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(709, 65);
+            this.panel2.Size = new System.Drawing.Size(855, 65);
             this.panel2.TabIndex = 13;
             // 
             // dgvAdminEmployee
@@ -475,7 +475,7 @@
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvAdminEmployee.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvAdminEmployee.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAdminEmployee.Size = new System.Drawing.Size(709, 715);
+            this.dgvAdminEmployee.Size = new System.Drawing.Size(855, 715);
             this.dgvAdminEmployee.TabIndex = 14;
             // 
             // EmployeeId
@@ -572,7 +572,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.groupBox2);
             this.Name = "ControlAdminEmployee";
-            this.Size = new System.Drawing.Size(1141, 780);
+            this.Size = new System.Drawing.Size(1287, 780);
             this.Load += new System.EventHandler(this.ControlAdminEmployee_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();

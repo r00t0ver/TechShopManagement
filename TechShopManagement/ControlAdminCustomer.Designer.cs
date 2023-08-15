@@ -35,6 +35,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvAdminCustomer = new System.Windows.Forms.DataGridView();
+            this.CustomerId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalExpense = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.txtSearchCustomer = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -54,11 +59,6 @@
             this.txtCustomerId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.CustomerId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TotalExpense = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdminCustomer)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -115,6 +115,43 @@
             this.dgvAdminCustomer.TabIndex = 16;
             this.dgvAdminCustomer.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAdminCustomer_CellContentClick);
             // 
+            // CustomerId
+            // 
+            this.CustomerId.DataPropertyName = "CustomerId";
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CustomerId.DefaultCellStyle = dataGridViewCellStyle9;
+            this.CustomerId.HeaderText = "Customer Id";
+            this.CustomerId.Name = "CustomerId";
+            this.CustomerId.ReadOnly = true;
+            // 
+            // CustomerName
+            // 
+            this.CustomerName.DataPropertyName = "CustomerName";
+            this.CustomerName.HeaderText = "Customer Name";
+            this.CustomerName.Name = "CustomerName";
+            this.CustomerName.ReadOnly = true;
+            // 
+            // Address
+            // 
+            this.Address.DataPropertyName = "CustomerAddress";
+            this.Address.HeaderText = "Address";
+            this.Address.Name = "Address";
+            this.Address.ReadOnly = true;
+            // 
+            // PhoneNumber
+            // 
+            this.PhoneNumber.DataPropertyName = "CustomerPhoneNumber";
+            this.PhoneNumber.HeaderText = "Phone Number";
+            this.PhoneNumber.Name = "PhoneNumber";
+            this.PhoneNumber.ReadOnly = true;
+            // 
+            // TotalExpense
+            // 
+            this.TotalExpense.DataPropertyName = "CustomerTotalExpense";
+            this.TotalExpense.HeaderText = "Total Expense";
+            this.TotalExpense.Name = "TotalExpense";
+            this.TotalExpense.ReadOnly = true;
+            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.txtSearchCustomer);
@@ -143,9 +180,9 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(19, 46);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(156, 20);
+            this.label4.Size = new System.Drawing.Size(155, 20);
             this.label4.TabIndex = 2;
-            this.label4.Text = "Search Employee By";
+            this.label4.Text = "Search Customer By";
             // 
             // cbmSearchCustomerBy
             // 
@@ -289,6 +326,7 @@
             // 
             // txtCustomerId
             // 
+            this.txtCustomerId.Enabled = false;
             this.txtCustomerId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCustomerId.Location = new System.Drawing.Point(169, 42);
             this.txtCustomerId.Name = "txtCustomerId";
@@ -314,43 +352,6 @@
             this.label8.Size = new System.Drawing.Size(115, 20);
             this.label8.TabIndex = 2;
             this.label8.Text = "Phone Number";
-            // 
-            // CustomerId
-            // 
-            this.CustomerId.DataPropertyName = "CustomerId";
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CustomerId.DefaultCellStyle = dataGridViewCellStyle9;
-            this.CustomerId.HeaderText = "Customer Id";
-            this.CustomerId.Name = "CustomerId";
-            this.CustomerId.ReadOnly = true;
-            // 
-            // CustomerName
-            // 
-            this.CustomerName.DataPropertyName = "CustomerName";
-            this.CustomerName.HeaderText = "Customer Name";
-            this.CustomerName.Name = "CustomerName";
-            this.CustomerName.ReadOnly = true;
-            // 
-            // Address
-            // 
-            this.Address.DataPropertyName = "CustomerAddress";
-            this.Address.HeaderText = "Address";
-            this.Address.Name = "Address";
-            this.Address.ReadOnly = true;
-            // 
-            // PhoneNumber
-            // 
-            this.PhoneNumber.DataPropertyName = "CustomerPhoneNumber";
-            this.PhoneNumber.HeaderText = "Phone Number";
-            this.PhoneNumber.Name = "PhoneNumber";
-            this.PhoneNumber.ReadOnly = true;
-            // 
-            // TotalExpense
-            // 
-            this.TotalExpense.DataPropertyName = "CustomerTotalExpense";
-            this.TotalExpense.HeaderText = "Total Expense";
-            this.TotalExpense.Name = "TotalExpense";
-            this.TotalExpense.ReadOnly = true;
             // 
             // ControlAdminCustomer
             // 

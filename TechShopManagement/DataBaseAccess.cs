@@ -10,6 +10,7 @@ namespace TechShopManagement
 {
     internal class DataBaseAccess
     {
+
         private SqlConnection sqlcon;
         public SqlConnection Sqlcon
         {

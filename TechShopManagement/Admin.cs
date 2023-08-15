@@ -13,12 +13,17 @@ namespace TechShopManagement
     
     public partial class Admin : Form
     {
+        private string id, name;
         private DataBaseAccess DBA { get; set; }
-        public Admin()
+        public Admin(string id,string name)
         {
 
             InitializeComponent();
-            
+            this.id = id;
+            this.name = name;
+            this.empId.Text = "Employee Id : " + id;
+            this.empName.Text = "Employee Name : " + name;
+
         }
 
         private void employeeManagementToolStripMenuItem_Click(object sender, EventArgs e)
@@ -51,6 +56,9 @@ namespace TechShopManagement
             customer.Show();
         }
 
+        private void Admin_Load(object sender, EventArgs e)
+        {
 
+        }
     }
 }

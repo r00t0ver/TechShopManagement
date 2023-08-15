@@ -76,7 +76,10 @@
             this.labelDate = new System.Windows.Forms.Label();
             this.labelTime = new System.Windows.Forms.Label();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.empId = new System.Windows.Forms.Label();
+            this.empName = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAddingProduct)).BeginInit();
@@ -96,6 +99,8 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.empName);
+            this.panel4.Controls.Add(this.empId);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
@@ -201,6 +206,7 @@
             // 
             // txtProductId
             // 
+            this.txtProductId.Enabled = false;
             this.txtProductId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProductId.Location = new System.Drawing.Point(170, 45);
             this.txtProductId.Name = "txtProductId";
@@ -527,6 +533,26 @@
             // 
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
+            // empId
+            // 
+            this.empId.AutoSize = true;
+            this.empId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.empId.Location = new System.Drawing.Point(31, 22);
+            this.empId.Name = "empId";
+            this.empId.Size = new System.Drawing.Size(97, 20);
+            this.empId.TabIndex = 0;
+            this.empId.Text = "Employee Id";
+            // 
+            // empName
+            // 
+            this.empName.AutoSize = true;
+            this.empName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.empName.Location = new System.Drawing.Point(31, 58);
+            this.empName.Name = "empName";
+            this.empName.Size = new System.Drawing.Size(125, 20);
+            this.empName.TabIndex = 0;
+            this.empName.Text = "Employee Name";
+            // 
             // ProductManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -538,6 +564,8 @@
             this.Text = "ProductManager";
             this.Load += new System.EventHandler(this.ProductManager_Load);
             this.panel1.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -580,7 +608,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductId;
         private System.Windows.Forms.DataGridViewTextBoxColumn BrandName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductCategory;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
+        private new System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Warrenty;
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
@@ -593,5 +621,7 @@
         private System.Windows.Forms.Button btnClearSelection;
         private System.Windows.Forms.TextBox txtSearchProduct;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label empId;
+        private System.Windows.Forms.Label empName;
     }
 }

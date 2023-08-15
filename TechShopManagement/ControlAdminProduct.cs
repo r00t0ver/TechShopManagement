@@ -12,8 +12,48 @@ namespace TechShopManagement
 {
     public partial class ControlAdminProduct : UserControl
     {
+        private string GenerateAdminProduct()
+        {
+            try
+            {
+                string autoid;
+                var sql = "SELECT ProductId FROM ProductList ORDER BY ProductId DESC;";
+                DataSet ds = this.dba.ExecuteQuery(sql);
+                int count = ds.Tables[0].Rows.Count;
+
+                if (count == 0)
+                {
+                    return "p-001";
+                }
+                else
+                {
+                    string prekey = ds.Tables[0].Rows[0][0].ToString();
+                    string[] parts = prekey.Split('-');
+
+                    string prefix = parts[0]; // "p"
+                    string number = parts[1]; // "001"
+
+                    if (int.TryParse(number, out int n))
+                    {
+                        n = n + 1;
+                        autoid = "p-" + n.ToString("D3");
+                        return autoid;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid numeric part in ProductId.");
+                        return ""; // Return some default value or handle the error accordingly
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return ""; // Return some default value or handle the error accordingly
+            }
+        }
         private  DataBaseAccess dba { get; set; }
-        private void Show()
+        private new void Show()
         {
             try
             {
@@ -33,8 +73,11 @@ namespace TechShopManagement
         {
             InitializeComponent();
             this.dba=new DataBaseAccess();
+            this.cbmSearchP.SelectedIndex = 0;
             this.Show();
-            
+            this.txtProductId.Text = GenerateAdminProduct();
+
+
 
         }
 
@@ -54,6 +97,11 @@ namespace TechShopManagement
         {
             try
             {
+                if (!this.IsValidToSave())
+                {
+                    MessageBox.Show("no data this row");
+                    return;
+                }
                 var quer = "select * from ProductList where ProductId ='" + this.txtProductId.Text + "';";
                 var dt = this.dba.ExecuteQueryTable(quer);
                 if (dt.Rows.Count == 1)
@@ -97,11 +145,30 @@ namespace TechShopManagement
                 MessageBox.Show("Error: " + exc.Message);
             }
         }
+        private bool IsValidToSave()
+        {
+            if (String.IsNullOrEmpty(this.txtProductId.Text) || String.IsNullOrEmpty(this.txtBrandName.Text) ||
+               String.IsNullOrEmpty(this.txtProductCategory.Text) || String.IsNullOrEmpty(this.txtProductName.Text) ||
+               String.IsNullOrEmpty(this.txtWarranty.Text) ||
+               String.IsNullOrEmpty(this.txtPrice.Text) ||
+               String.IsNullOrEmpty(this.txtQuantity.Text) ||
+               String.IsNullOrEmpty(this.txtDescription.Text))
+            {
+                return false;
+            }
+            else
+                return true;
+        }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             try
             {
+                if (this.dgvAdminProduct.SelectedRows.Count == 0)
+                {
+                    MessageBox.Show("Please select a Row first to delete the data", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 string id = this.dgvAdminProduct.CurrentRow.Cells["ProductId"].Value.ToString();
 
                 if (id.Length != 0)
@@ -132,7 +199,7 @@ namespace TechShopManagement
         {
             try
             {
-                this.txtProductId.Text = this.dgvAdminProduct.CurrentRow.Cells["ProductId"].Value.ToString();
+                //this.txtProductId.Text = this.dgvAdminProduct.CurrentRow.Cells["ProductId"].Value.ToString();
                 this.txtBrandName.Text = this.dgvAdminProduct.CurrentRow.Cells["BrandName"].Value.ToString();
                 this.txtProductCategory.Text = this.dgvAdminProduct.CurrentRow.Cells["ProductCategory"].Value.ToString();
                 this.txtProductName.Text = this.dgvAdminProduct.CurrentRow.Cells["ProductName"].Value.ToString();
@@ -147,7 +214,7 @@ namespace TechShopManagement
 
         private void btnClearField_Click(object sender, EventArgs e)
         {
-            this.txtProductId.Clear();
+            
             this.txtBrandName.Clear();
             this.txtProductCategory.Clear();
             this.txtProductName.Clear();
@@ -156,5 +223,7 @@ namespace TechShopManagement
             this.txtQuantity.Clear();
             this.txtDescription.Clear();
         }
+
+
     }
 }

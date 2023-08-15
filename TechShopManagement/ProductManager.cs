@@ -11,14 +11,69 @@ using System.Windows.Forms;
 
 namespace TechShopManagement
 {
+    
     public partial class ProductManager : Form
     {
+        private string id, name;
         private DataBaseAccess dba { set; get; }
+        private string Generate()
+        {
+            try
+            {
+                string autoid;
+                var sql = "SELECT ProductId FROM ProductList ORDER BY ProductId DESC;";
+                DataSet ds = this.dba.ExecuteQuery(sql);
+                int count = ds.Tables[0].Rows.Count;
+
+                if (count == 0)
+                {
+                    return "p-001";
+                }
+                else
+                {
+                    string prekey = ds.Tables[0].Rows[0][0].ToString();
+                    string[] parts = prekey.Split('-');
+
+                    string prefix = parts[0]; // "p"
+                    string number = parts[1]; // "001"
+
+                    if (int.TryParse(number, out int n))
+                    {
+                        n = n + 1;
+                        autoid = "p-" + n.ToString("D3");
+                        return autoid;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid numeric part in ProductId.");
+                        return ""; // Return some default value or handle the error accordingly
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return ""; // Return some default value or handle the error accordingly
+            }
+        }
+        private void ClearField()
+        {
+            this.txtProductId.Clear();
+            this.txtBrandName.Clear();
+            this.txtProductCategory.Clear();
+            this.txtProductName.Clear();
+            this.txtWarranty.Clear();
+            this.txtPrice.Clear();
+            this.txtQuantity.Clear();
+            this.txtDescription.Clear();
+        }
+
         private void setDefault()
         {
             this.cmbCategory.SelectedIndex= 3;
+            
         }
-        private void print()
+        private  void print()
         {
             try
             {
@@ -33,13 +88,18 @@ namespace TechShopManagement
             this.dgvAddingProduct.ClearSelection();
         }
 
-        public ProductManager()
+        public ProductManager(string id,string name)
         {
             InitializeComponent();
             setDefault();
             watch2();
             dba = new DataBaseAccess();
             print();
+            this.txtProductId.Text = this.Generate();
+            this.id= id;
+            this.name= name;
+            this.empId.Text = "Employee Id : " + id;
+            this.empName.Text = "Employee Name : " + name;
         }
         private void watch2()
         {
@@ -69,10 +129,10 @@ namespace TechShopManagement
 	                        ProductCategory='" + this.txtProductCategory.Text + @"',
 	                        ProductName='" + this.txtProductName.Text + @"',
 	                        Warranty='" + this.txtWarranty.Text + @"',
-	                        Price='" + this.txtPrice.Text + @"',',
-	                        Quantity='" + this.txtQuantity.Text + @"',',
-	                        Description='" + this.txtDescription.Text + @"',',
-                            where ProductId ='" + this.txtProductId.Text + "',';";
+	                        Price='" + this.txtPrice.Text + @"',
+	                        Quantity='" + this.txtQuantity.Text + @"',
+	                        Description='" + this.txtDescription.Text + @"'
+                            where ProductId ='" + this.txtProductId.Text + "';";
                     var count = this.dba.ExecuteDMLQuery(sql);
                     if (count == 1)
                     {
@@ -102,6 +162,8 @@ namespace TechShopManagement
             {
                 MessageBox.Show("Fill All the text box properly  " + exc.Message);
             }
+            Generate();
+            ClearField();
         }
 
 
@@ -111,7 +173,7 @@ namespace TechShopManagement
             
             try
             {
-                this.txtProductId.Text = this.dgvAddingProduct.CurrentRow.Cells["ProductId"].Value.ToString();
+                //this.txtProductId.Text = this.dgvAddingProduct.CurrentRow.Cells["ProductId"].Value.ToString();
                 this.txtBrandName.Text = this.dgvAddingProduct.CurrentRow.Cells["BrandName"].Value.ToString();
                 this.txtProductCategory.Text = this.dgvAddingProduct.CurrentRow.Cells["ProductCategory"].Value.ToString();
                 this.txtProductName.Text = this.dgvAddingProduct.CurrentRow.Cells["ProductName"].Value.ToString();

@@ -13,9 +13,65 @@ namespace TechShopManagement
 {
     public partial class ControlAdminEmployee : UserControl
     {
+        private string GenerateEmployee()
+        {
+            try
+            {
+                string autoid;
+                var sql = "SELECT EmployeeId FROM EmployeeList ORDER BY EmployeeId DESC;";
+                DataSet ds = this.dba.ExecuteQuery(sql);
+                int count = ds.Tables[0].Rows.Count;
+
+                if (count == 0)
+                {
+                    return "e-001";
+                }
+                else
+                {
+                    string prekey = ds.Tables[0].Rows[0][0].ToString();
+                    string[] parts = prekey.Split('-');
+
+                    string prefix = parts[0]; // "p"
+                    string number = parts[1]; // "001"
+
+                    if (int.TryParse(number, out int n))
+                    {
+                        n = n + 1;
+                        autoid = "e-" + n.ToString("D3");
+                        return autoid;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid numeric part in ProductId.");
+                        return ""; // Return some default value or handle the error accordingly
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return ""; // Return some default value or handle the error accordingly
+            }
+        }
+        private void ClearField()
+        {
+            this.txtPassword.Text = "";
+            this.txtEmployeelName.Text = "";
+            this.cmbEmployeeRole.Text = "";
+            this.txtJobExperience.Text = "";
+            this.ddpJoiningDate.Text = "";
+            this.ddpDateOfBirth.Text = "";
+            this.cmbEmployeeBloodGroup.Text = "";
+            this.txtEmployeePhoneNumber.Text = "";
+            this.txtEmployeeSalary.Text = "";
+            this.txtEmployeeAddress.Text = "";
+
+            rbFemale.Checked = false;
+            rbMale.Checked = false;
+        }
         private DataBaseAccess dba { get; set; }
         private string gender;
-        private void show()
+        private  void show()
         {
             try
             {
@@ -34,6 +90,8 @@ namespace TechShopManagement
         {
             InitializeComponent();
             this.dba=new DataBaseAccess();
+            this.cmbSearch.SelectedIndex = 1;
+            this.txtEmployeeId.Text = GenerateEmployee();
         }
 
 
@@ -45,13 +103,20 @@ namespace TechShopManagement
         private void btnSave_Click(object sender, EventArgs e)
         {
 
-            var quer = "select * from EmployeeList where EmployeeId='" + this.txtEmployeeId.Text + "';";
-
-            var dt = this.dba.ExecuteQueryTable(quer);
-            MessageBox.Show("Run" + this.ddpDateOfBirth.Text);
+            
 
             try
             {
+                if (!this.IsValidToSave())
+                {
+                    MessageBox.Show("no data this row");
+                    return;
+                }
+                var quer = "select * from EmployeeList where EmployeeId='" + this.txtEmployeeId.Text + "';";
+
+                var dt = this.dba.ExecuteQueryTable(quer);
+                //MessageBox.Show("Run" + this.ddpDateOfBirth.Text);
+                
                 if (dt.Rows.Count == 1)
                 {
                     var sql = @"update EmployeeList set
@@ -98,6 +163,29 @@ namespace TechShopManagement
                 MessageBox.Show("Error: " + exc.Message + exc.StackTrace);
             }
             this.show();
+            GenerateEmployee();
+            ClearField();
+
+
+        }
+
+        private bool IsValidToSave()
+        {
+            if (String.IsNullOrEmpty(this.txtEmployeeId.Text) || String.IsNullOrEmpty(this.txtPassword.Text) ||
+               String.IsNullOrEmpty(this.txtEmployeelName.Text) || String.IsNullOrEmpty(this.cmbEmployeeRole.Text) ||
+               String.IsNullOrEmpty(this.txtJobExperience.Text) ||
+               String.IsNullOrEmpty(this.ddpJoiningDate.Text) ||
+               String.IsNullOrEmpty(this.ddpDateOfBirth.Text) ||
+               String.IsNullOrEmpty(this.gender) ||
+               String.IsNullOrEmpty(this.cmbEmployeeBloodGroup.Text) ||
+               String.IsNullOrEmpty(this.txtEmployeePhoneNumber.Text) ||
+               String.IsNullOrEmpty(this.txtEmployeeSalary.Text) ||
+               String.IsNullOrEmpty(this.txtEmployeeAddress.Text))
+            {
+                return false;
+            }
+            else
+                return true;
         }
 
         private void rbMale_CheckedChanged(object sender, EventArgs e)
@@ -114,7 +202,7 @@ namespace TechShopManagement
         {
             try
             {
-                this.txtEmployeeId.Text = this.dgvAdminEmployee.CurrentRow.Cells["EmployeeId"].Value.ToString();
+                //this.txtEmployeeId.Text = this.dgvAdminEmployee.CurrentRow.Cells["EmployeeId"].Value.ToString();
                 this.txtPassword.Text = this.dgvAdminEmployee.CurrentRow.Cells["EmployeePassword"].Value.ToString();
                 this.txtEmployeelName.Text = this.dgvAdminEmployee.CurrentRow.Cells["EmployeeName"].Value.ToString();
                 this.cmbEmployeeRole.Text = this.dgvAdminEmployee.CurrentRow.Cells["EmployeeRole"].Value.ToString();
@@ -137,7 +225,7 @@ namespace TechShopManagement
 
         private void btnClearSelection_Click(object sender, EventArgs e)
         {
-            this.txtEmployeeId.Text = "";
+           
             this.txtPassword.Text = "";
             this.txtEmployeelName.Text = "";
             this.cmbEmployeeRole.Text = "";
@@ -148,12 +236,20 @@ namespace TechShopManagement
             this.txtEmployeePhoneNumber.Text = "";
             this.txtEmployeeSalary.Text = "";
             this.txtEmployeeAddress.Text = "";
+
+            rbFemale.Checked = false;
+            rbMale.Checked = false;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             try
             {
+                if (this.dgvAdminEmployee.SelectedRows.Count == 0)
+                {
+                    MessageBox.Show("Please select a Row first to delete the data", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 string id = this.dgvAdminEmployee.CurrentRow.Cells["EmployeeId"].Value.ToString();
 
                 if (id.Length != 0)
@@ -171,6 +267,13 @@ namespace TechShopManagement
                 MessageBox.Show(ex.Message);
             }
             show();
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            var sql = @"select * from EmployeeList where EmployeeName like '%" + this.txtSearchEmployee.Text + "%';";
+            DataSet ds = this.dba.ExecuteQuery(sql);
+            this.dgvAdminEmployee.DataSource = ds.Tables[0];
         }
     }
 }

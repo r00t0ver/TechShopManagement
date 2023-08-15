@@ -62,24 +62,6 @@
     <Compile Include="Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="Unused\AdminCustomer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Unused\AdminCustomer.Designer.cs">
-      <DependentUpon>AdminCustomer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Unused\AdminEmployee.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Unused\AdminEmployee.Designer.cs">
-      <DependentUpon>AdminEmployee.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Unused\AdminProduct.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Unused\AdminProduct.Designer.cs">
-      <DependentUpon>AdminProduct.cs</DependentUpon>
-    </Compile>
     <Compile Include="ControlAdminCustomer.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -117,15 +99,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Unused\AdminCustomer.resx">
-      <DependentUpon>AdminCustomer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Unused\AdminEmployee.resx">
-      <DependentUpon>AdminEmployee.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Unused\AdminProduct.resx">
-      <DependentUpon>AdminProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ControlAdminCustomer.resx">
       <DependentUpon>ControlAdminCustomer.cs</DependentUpon>

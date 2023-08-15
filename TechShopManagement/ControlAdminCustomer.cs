@@ -12,8 +12,48 @@ namespace TechShopManagement
 {
     public partial class ControlAdminCustomer : UserControl
     {
+        private string GenerateAdminCustomer()
+        {
+            try
+            {
+                string autoid;
+                var sql = "SELECT CustomerId FROM CustomerList ORDER BY CustomerId DESC;";
+                DataSet ds = this.dba.ExecuteQuery(sql);
+                int count = ds.Tables[0].Rows.Count;
+
+                if (count == 0)
+                {
+                    return "c-001";
+                }
+                else
+                {
+                    string prekey = ds.Tables[0].Rows[0][0].ToString();
+                    string[] parts = prekey.Split('-');
+
+                    string prefix = parts[0]; // "p"
+                    string number = parts[1]; // "001"
+
+                    if (int.TryParse(number, out int n))
+                    {
+                        n = n + 1;
+                        autoid = "c-" + n.ToString("D3");
+                        return autoid;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid numeric part in ProductId.");
+                        return ""; // Return some default value or handle the error accordingly
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return ""; // Return some default value or handle the error accordingly
+            }
+        }
         private DataBaseAccess dba { get; set; }
-        private void Show()
+        private new void Show()
         {
             try
             {
@@ -34,6 +74,7 @@ namespace TechShopManagement
             InitializeComponent();
             this.cbmSearchCustomerBy.SelectedIndex = 1;
             this.dba = new DataBaseAccess();
+            this.txtCustomerId.Text = GenerateAdminCustomer();
         }
 
         private void ControlAdminCustomer_Load(object sender, EventArgs e)
@@ -46,6 +87,11 @@ namespace TechShopManagement
 
             try
             {
+                if (!this.IsValidToSave())
+                {
+                    MessageBox.Show("no data this row");
+                    return;
+                }
                 var quer = "select * from CustomerList where CustomerId ='" + this.txtCustomerId.Text + "';";
                 var dt = this.dba.ExecuteQueryTable(quer);
                 if (dt.Rows.Count == 1)
@@ -88,12 +134,24 @@ namespace TechShopManagement
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
+        private bool IsValidToSave()
+        {
+            if (String.IsNullOrEmpty(this.txtCustomerId.Text) || String.IsNullOrEmpty(this.txtPhoneNumber.Text) ||
+               String.IsNullOrEmpty(this.txtCustomerName.Text) || String.IsNullOrEmpty(this.txtCustomerAddress.Text) ||
+               String.IsNullOrEmpty(this.txtTotalExpense.Text))
+            {
+                return false;
+            }
+            else
+                return true;
+        }
+
 
         private void dgvAdminCustomer_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
-                this.txtCustomerId.Text = this.dgvAdminCustomer.CurrentRow.Cells["CustomerId"].Value.ToString();
+                //this.txtCustomerId.Text = this.dgvAdminCustomer.CurrentRow.Cells["CustomerId"].Value.ToString();
                 this.txtCustomerName.Text = this.dgvAdminCustomer.CurrentRow.Cells["CustomerName"].Value.ToString();
                 this.txtCustomerAddress.Text = this.dgvAdminCustomer.CurrentRow.Cells["Address"].Value.ToString();
                 this.txtPhoneNumber.Text = this.dgvAdminCustomer.CurrentRow.Cells["PhoneNumber"].Value.ToString();
@@ -104,7 +162,7 @@ namespace TechShopManagement
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            this.txtCustomerId.Clear();
+            
             this.txtCustomerName.Clear();
             this.txtCustomerAddress.Clear();
             this.txtPhoneNumber.Clear();
@@ -115,6 +173,11 @@ namespace TechShopManagement
         {
             try
             {
+                if (this.dgvAdminCustomer.SelectedRows.Count == 0)
+                {
+                    MessageBox.Show("Please select a Row first to delete the data", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 string id = this.dgvAdminCustomer.CurrentRow.Cells["CustomerId"].Value.ToString();
 
                 if (id.Length != 0)

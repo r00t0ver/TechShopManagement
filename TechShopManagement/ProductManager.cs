@@ -104,18 +104,7 @@ namespace TechShopManagement
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            this.txtProductId.Clear();
-            this.txtBrandName.Clear(); 
-            this.txtProductCategory.Clear();
-            this.txtProductName.Clear();
-            this.txtWarranty.Clear();
-            this.txtPrice.Clear();
-            this.txtQuantity.Clear();
-            this.txtDescription.Clear();
 
-        }
 
         private void dgvAddingProduct_Click(object sender, EventArgs e)
         {
@@ -172,6 +161,23 @@ namespace TechShopManagement
         private void btnClearSelection_Click(object sender, EventArgs e)
         {
             this.dgvAddingProduct.ClearSelection();
+        }
+
+        private void ProductManager_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            this.txtProductId.Clear();
+            this.txtBrandName.Clear();
+            this.txtProductCategory.Clear();
+            this.txtProductName.Clear();
+            this.txtWarranty.Clear();
+            this.txtPrice.Clear();
+            this.txtQuantity.Clear();
+            this.txtDescription.Clear();
         }
     }
 }

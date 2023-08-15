@@ -36,27 +36,27 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvAdminCustomer = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.ttxtSearchCustomer = new System.Windows.Forms.TextBox();
+            this.txtSearchCustomer = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cbmSearchCustomerBy = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textTotalExpense = new System.Windows.Forms.TextBox();
-            this.textCustomerAddress = new System.Windows.Forms.TextBox();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.txtTotalExpense = new System.Windows.Forms.TextBox();
+            this.txtCustomerAddress = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textCustomerName = new System.Windows.Forms.TextBox();
+            this.txtCustomerName = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.textPhoneNumber = new System.Windows.Forms.TextBox();
+            this.txtPhoneNumber = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textCustomerId = new System.Windows.Forms.TextBox();
+            this.txtCustomerId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CustomerId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CustomerAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TotalExpense = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAdminCustomer)).BeginInit();
@@ -82,9 +82,9 @@
             this.dgvAdminCustomer.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvAdminCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAdminCustomer.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ProductId,
+            this.CustomerId,
             this.CustomerName,
-            this.CustomerAddress,
+            this.Address,
             this.PhoneNumber,
             this.TotalExpense});
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -113,10 +113,11 @@
             this.dgvAdminCustomer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAdminCustomer.Size = new System.Drawing.Size(705, 661);
             this.dgvAdminCustomer.TabIndex = 16;
+            this.dgvAdminCustomer.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAdminCustomer_CellContentClick);
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.ttxtSearchCustomer);
+            this.panel3.Controls.Add(this.txtSearchCustomer);
             this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.Add(this.cbmSearchCustomerBy);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
@@ -125,14 +126,15 @@
             this.panel3.Size = new System.Drawing.Size(705, 103);
             this.panel3.TabIndex = 15;
             // 
-            // ttxtSearchCustomer
+            // txtSearchCustomer
             // 
-            this.ttxtSearchCustomer.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.ttxtSearchCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ttxtSearchCustomer.Location = new System.Drawing.Point(369, 39);
-            this.ttxtSearchCustomer.Name = "ttxtSearchCustomer";
-            this.ttxtSearchCustomer.Size = new System.Drawing.Size(277, 26);
-            this.ttxtSearchCustomer.TabIndex = 1;
+            this.txtSearchCustomer.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.txtSearchCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearchCustomer.Location = new System.Drawing.Point(369, 39);
+            this.txtSearchCustomer.Name = "txtSearchCustomer";
+            this.txtSearchCustomer.Size = new System.Drawing.Size(277, 26);
+            this.txtSearchCustomer.TabIndex = 1;
+            this.txtSearchCustomer.TextChanged += new System.EventHandler(this.txtSearchCustomer_TextChanged);
             // 
             // label4
             // 
@@ -171,17 +173,17 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button4);
-            this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.textTotalExpense);
-            this.groupBox1.Controls.Add(this.textCustomerAddress);
+            this.groupBox1.Controls.Add(this.btnClear);
+            this.groupBox1.Controls.Add(this.btnSave);
+            this.groupBox1.Controls.Add(this.btnDelete);
+            this.groupBox1.Controls.Add(this.txtTotalExpense);
+            this.groupBox1.Controls.Add(this.txtCustomerAddress);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.textCustomerName);
+            this.groupBox1.Controls.Add(this.txtCustomerName);
             this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.textPhoneNumber);
+            this.groupBox1.Controls.Add(this.txtPhoneNumber);
             this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.textCustomerId);
+            this.groupBox1.Controls.Add(this.txtCustomerId);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -192,49 +194,52 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Customer";
             // 
-            // button4
+            // btnClear
             // 
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(24, 374);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(368, 33);
-            this.button4.TabIndex = 8;
-            this.button4.Text = "Clear Selection";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClear.Location = new System.Drawing.Point(24, 374);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(368, 33);
+            this.btnClear.TabIndex = 8;
+            this.btnClear.Text = "Clear Selection";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
-            // button3
+            // btnSave
             // 
-            this.button3.Location = new System.Drawing.Point(24, 298);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(368, 32);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "Save ";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnSave.Location = new System.Drawing.Point(24, 298);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(368, 32);
+            this.btnSave.TabIndex = 4;
+            this.btnSave.Text = "Save ";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // button1
+            // btnDelete
             // 
-            this.button1.Location = new System.Drawing.Point(24, 336);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(368, 32);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Delete";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnDelete.Location = new System.Drawing.Point(24, 336);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(368, 32);
+            this.btnDelete.TabIndex = 5;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // textTotalExpense
+            // txtTotalExpense
             // 
-            this.textTotalExpense.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textTotalExpense.Location = new System.Drawing.Point(169, 203);
-            this.textTotalExpense.Name = "textTotalExpense";
-            this.textTotalExpense.Size = new System.Drawing.Size(223, 26);
-            this.textTotalExpense.TabIndex = 1;
+            this.txtTotalExpense.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotalExpense.Location = new System.Drawing.Point(169, 203);
+            this.txtTotalExpense.Name = "txtTotalExpense";
+            this.txtTotalExpense.Size = new System.Drawing.Size(223, 26);
+            this.txtTotalExpense.TabIndex = 1;
             // 
-            // textCustomerAddress
+            // txtCustomerAddress
             // 
-            this.textCustomerAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textCustomerAddress.Location = new System.Drawing.Point(169, 162);
-            this.textCustomerAddress.Name = "textCustomerAddress";
-            this.textCustomerAddress.Size = new System.Drawing.Size(223, 26);
-            this.textCustomerAddress.TabIndex = 1;
+            this.txtCustomerAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCustomerAddress.Location = new System.Drawing.Point(169, 162);
+            this.txtCustomerAddress.Name = "txtCustomerAddress";
+            this.txtCustomerAddress.Size = new System.Drawing.Size(223, 26);
+            this.txtCustomerAddress.TabIndex = 1;
             // 
             // label2
             // 
@@ -246,13 +251,13 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Total Expense";
             // 
-            // textCustomerName
+            // txtCustomerName
             // 
-            this.textCustomerName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textCustomerName.Location = new System.Drawing.Point(169, 121);
-            this.textCustomerName.Name = "textCustomerName";
-            this.textCustomerName.Size = new System.Drawing.Size(223, 26);
-            this.textCustomerName.TabIndex = 1;
+            this.txtCustomerName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCustomerName.Location = new System.Drawing.Point(169, 121);
+            this.txtCustomerName.Name = "txtCustomerName";
+            this.txtCustomerName.Size = new System.Drawing.Size(223, 26);
+            this.txtCustomerName.TabIndex = 1;
             // 
             // label10
             // 
@@ -264,13 +269,13 @@
             this.label10.TabIndex = 2;
             this.label10.Text = "Customer Address";
             // 
-            // textPhoneNumber
+            // txtPhoneNumber
             // 
-            this.textPhoneNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textPhoneNumber.Location = new System.Drawing.Point(169, 80);
-            this.textPhoneNumber.Name = "textPhoneNumber";
-            this.textPhoneNumber.Size = new System.Drawing.Size(223, 26);
-            this.textPhoneNumber.TabIndex = 1;
+            this.txtPhoneNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPhoneNumber.Location = new System.Drawing.Point(169, 80);
+            this.txtPhoneNumber.Name = "txtPhoneNumber";
+            this.txtPhoneNumber.Size = new System.Drawing.Size(223, 26);
+            this.txtPhoneNumber.TabIndex = 1;
             // 
             // label9
             // 
@@ -282,13 +287,13 @@
             this.label9.TabIndex = 2;
             this.label9.Text = "Customer Name";
             // 
-            // textCustomerId
+            // txtCustomerId
             // 
-            this.textCustomerId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textCustomerId.Location = new System.Drawing.Point(169, 42);
-            this.textCustomerId.Name = "textCustomerId";
-            this.textCustomerId.Size = new System.Drawing.Size(223, 26);
-            this.textCustomerId.TabIndex = 1;
+            this.txtCustomerId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCustomerId.Location = new System.Drawing.Point(169, 42);
+            this.txtCustomerId.Name = "txtCustomerId";
+            this.txtCustomerId.Size = new System.Drawing.Size(223, 26);
+            this.txtCustomerId.TabIndex = 1;
             // 
             // label1
             // 
@@ -310,14 +315,14 @@
             this.label8.TabIndex = 2;
             this.label8.Text = "Phone Number";
             // 
-            // ProductId
+            // CustomerId
             // 
-            this.ProductId.DataPropertyName = "CustomerId";
+            this.CustomerId.DataPropertyName = "CustomerId";
             dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ProductId.DefaultCellStyle = dataGridViewCellStyle9;
-            this.ProductId.HeaderText = "Customer Id";
-            this.ProductId.Name = "ProductId";
-            this.ProductId.ReadOnly = true;
+            this.CustomerId.DefaultCellStyle = dataGridViewCellStyle9;
+            this.CustomerId.HeaderText = "Customer Id";
+            this.CustomerId.Name = "CustomerId";
+            this.CustomerId.ReadOnly = true;
             // 
             // CustomerName
             // 
@@ -326,12 +331,12 @@
             this.CustomerName.Name = "CustomerName";
             this.CustomerName.ReadOnly = true;
             // 
-            // CustomerAddress
+            // Address
             // 
-            this.CustomerAddress.DataPropertyName = "CustomerAddress";
-            this.CustomerAddress.HeaderText = "Address";
-            this.CustomerAddress.Name = "CustomerAddress";
-            this.CustomerAddress.ReadOnly = true;
+            this.Address.DataPropertyName = "CustomerAddress";
+            this.Address.HeaderText = "Address";
+            this.Address.Name = "Address";
+            this.Address.ReadOnly = true;
             // 
             // PhoneNumber
             // 
@@ -371,27 +376,27 @@
 
         private System.Windows.Forms.DataGridView dgvAdminCustomer;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.TextBox ttxtSearchCustomer;
+        private System.Windows.Forms.TextBox txtSearchCustomer;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cbmSearchCustomerBy;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textTotalExpense;
-        private System.Windows.Forms.TextBox textCustomerAddress;
+        private System.Windows.Forms.TextBox txtTotalExpense;
+        private System.Windows.Forms.TextBox txtCustomerAddress;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textCustomerName;
+        private System.Windows.Forms.TextBox txtCustomerName;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textPhoneNumber;
+        private System.Windows.Forms.TextBox txtPhoneNumber;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textCustomerId;
+        private System.Windows.Forms.TextBox txtCustomerId;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProductId;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CustomerId;
         private System.Windows.Forms.DataGridViewTextBoxColumn CustomerName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CustomerAddress;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Address;
         private System.Windows.Forms.DataGridViewTextBoxColumn PhoneNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalExpense;
     }

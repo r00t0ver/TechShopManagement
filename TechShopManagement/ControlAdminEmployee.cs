@@ -14,6 +14,7 @@ namespace TechShopManagement
     public partial class ControlAdminEmployee : UserControl
     {
         private DataBaseAccess dba { get; set; }
+        private string gender;
         private void show()
         {
             try
@@ -41,9 +42,135 @@ namespace TechShopManagement
             show();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnSave_Click(object sender, EventArgs e)
         {
 
+            var quer = "select * from EmployeeList where EmployeeId='" + this.txtEmployeeId.Text + "';";
+
+            var dt = this.dba.ExecuteQueryTable(quer);
+            MessageBox.Show("Run" + this.ddpDateOfBirth.Text);
+
+            try
+            {
+                if (dt.Rows.Count == 1)
+                {
+                    var sql = @"update EmployeeList set
+                                        EmployeeId='" + this.txtEmployeeId.Text + @"',
+                                        EmployeePassword='" + this.txtPassword.Text + @"',
+                                        EmployeeName='" + this.txtEmployeelName.Text + @"',
+                                        EmployeeRole='" + this.cmbEmployeeRole.Text + @"',
+                                        JobExperience='" + this.txtJobExperience.Text + @"',
+                                        JoiningDate='" + this.ddpJoiningDate.Text + @"',
+                                        EmployeeDOB='" + this.ddpDateOfBirth.Text + @"',
+                                        EmployeeGender='" + this.gender + @"',
+                                        EmployeeBloodGroup='" + this.cmbEmployeeBloodGroup.Text + @"',
+                                        EmployeePhoneNumber='" + this.txtEmployeePhoneNumber.Text + @"',
+                                        EmployeeSalary='" + this.txtEmployeeSalary.Text + @"',
+                                        EmployeeAddress='" + this.txtEmployeeAddress.Text + @"',	                      
+                                        where EmployeeId ='" + this.txtEmployeeId.Text + "';";
+                    var count = this.dba.ExecuteDMLQuery(sql);
+                    if (count == 1)
+                    {
+                        MessageBox.Show("Updated Successfully");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Updated Unsuccessfull");
+                    }
+                    this.show();
+                }
+                else
+                {
+                    //insert
+                    var sql = "insert into EmployeeList values('" + this.txtEmployeeId.Text + "','" + this.txtPassword.Text + "','" + this.txtEmployeelName.Text + "','" + this.cmbEmployeeRole.Text + "'," + this.txtJobExperience.Text + ",'" + this.ddpJoiningDate.Text + "','" + this.ddpDateOfBirth.Text+ "','" + this.gender + "','" + this.cmbEmployeeBloodGroup.Text + "','" + this.txtEmployeePhoneNumber.Text + "'," + Convert.ToDouble(this.txtEmployeeSalary.Text) + ",'" + this.txtEmployeeAddress.Text + "');";
+                    var count = this.dba.ExecuteDMLQuery(sql);
+
+                    if (count == 1)
+                        MessageBox.Show("Data saved properly.");
+                    else
+                        MessageBox.Show("Failure While saving the data");
+
+                }
+
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error: " + exc.Message + exc.StackTrace);
+            }
+            this.show();
+        }
+
+        private void rbMale_CheckedChanged(object sender, EventArgs e)
+        {
+            this.gender = "Male";
+        }
+
+        private void rbFemale_CheckedChanged(object sender, EventArgs e)
+        {
+            this.gender = "Female";
+        }
+
+        private void dgvAdminEmployee_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.txtEmployeeId.Text = this.dgvAdminEmployee.CurrentRow.Cells["EmployeeId"].Value.ToString();
+                this.txtPassword.Text = this.dgvAdminEmployee.CurrentRow.Cells["EmployeePassword"].Value.ToString();
+                this.txtEmployeelName.Text = this.dgvAdminEmployee.CurrentRow.Cells["EmployeeName"].Value.ToString();
+                this.cmbEmployeeRole.Text = this.dgvAdminEmployee.CurrentRow.Cells["EmployeeRole"].Value.ToString();
+                this.txtJobExperience.Text = this.dgvAdminEmployee.CurrentRow.Cells["JobExperience"].Value.ToString();
+                this.ddpJoiningDate.Text = this.dgvAdminEmployee.CurrentRow.Cells["JoiningDate"].Value.ToString();
+                string gender=this.dgvAdminEmployee.CurrentRow.Cells["EmployeeGender"].Value.ToString(); ;
+                if(gender=="Male") { rbMale.Checked = true;  } 
+                else if(gender=="Female") { rbFemale.Checked = true; ; }
+
+                this.ddpDateOfBirth.Text = this.dgvAdminEmployee.CurrentRow.Cells["EmployeeDOB"].Value.ToString();
+                this.cmbEmployeeBloodGroup.Text = this.dgvAdminEmployee.CurrentRow.Cells["EmployeeBloodGroup"].Value.ToString();
+                this.txtEmployeePhoneNumber.Text = this.dgvAdminEmployee.CurrentRow.Cells["EmployeePhoneNumber"].Value.ToString();
+                this.txtEmployeeSalary.Text = this.dgvAdminEmployee.CurrentRow.Cells["EmployeeSalary"].Value.ToString();
+                this.txtEmployeeAddress.Text = this.dgvAdminEmployee.CurrentRow.Cells["EmployeeAddress"].Value.ToString();
+
+
+            }
+            catch (Exception ex) { MessageBox.Show("error: " + ex.Message); }
+        }
+
+        private void btnClearSelection_Click(object sender, EventArgs e)
+        {
+            this.txtEmployeeId.Text = "";
+            this.txtPassword.Text = "";
+            this.txtEmployeelName.Text = "";
+            this.cmbEmployeeRole.Text = "";
+            this.txtJobExperience.Text = "";
+            this.ddpJoiningDate.Text = "";
+            this.ddpDateOfBirth.Text = "";
+            this.cmbEmployeeBloodGroup.Text = "";
+            this.txtEmployeePhoneNumber.Text = "";
+            this.txtEmployeeSalary.Text = "";
+            this.txtEmployeeAddress.Text = "";
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string id = this.dgvAdminEmployee.CurrentRow.Cells["EmployeeId"].Value.ToString();
+
+                if (id.Length != 0)
+                {
+                    this.dba.ExecuteQuery("DELETE FROM EmployeeList WHERE EmployeeId='" + id + "';");
+                    MessageBox.Show("Deleted");
+                }
+                else
+                {
+                    MessageBox.Show("First Select a row");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            show();
         }
     }
 }

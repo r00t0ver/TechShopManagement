@@ -244,6 +244,7 @@ namespace TechShopManagement
             this.txtCustomerName.Text = "";
             this.txtCustomerPhoneNumber.Text = "";
             this.txtCustomerAddress.Text = "";
+            this.txtCustomerId.Text = this.GenerateCustomer();
 
         }
 
@@ -419,7 +420,7 @@ namespace TechShopManagement
                 }catch(Exception ex) { MessageBox.Show(ex.Message);}
                 try
                 {
-                    var sql3 = "insert into SoldProductList values('" + this.txtPurchasedId.Text + "'," + Convert.ToInt32(this.txtPayTotal.Text) + ",'" + this.txtCustomerId.Text + "','" + this.txtPurchasedId.Text + "');";
+                    var sql3 = "insert into SoldProductList values('" + this.txtPurchasedId.Text + "'," + Convert.ToInt32(this.txtPayTotal.Text) + ",'" + this.txtCustomerId.Text + "','" + this.ddpPurchasedDate.Text + "');";
                     var count3 = this.dba.ExecuteDMLQuery(sql3);
                     if (count3 == 1) { MessageBox.Show("Insert to SoldList");
                         this.dba.ExecuteQuery("delete from ProductCartList;");
@@ -447,7 +448,7 @@ namespace TechShopManagement
 
             if (dialogResult == DialogResult.Yes)
             {
-                this.Hide();
+                this.Dispose();
                 new Login().Show();
 
             }

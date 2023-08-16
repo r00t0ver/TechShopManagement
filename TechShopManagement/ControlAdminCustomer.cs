@@ -98,9 +98,9 @@ namespace TechShopManagement
                 {
                     var sql = @"update CustomerList set
 	                        CustomerName='" + this.txtCustomerName.Text + @"',
-	                        Address='" + this.txtCustomerAddress.Text + @"',
-	                        PhoneNumber='" + this.txtPhoneNumber.Text + @"',
-	                        TotalExpense='" + this.txtTotalExpense.Text + @"',',
+	                        CustomerAddress='" + this.txtCustomerAddress.Text + @"',
+	                        CustomerPhoneNumber='" + this.txtPhoneNumber.Text + @"',
+	                        CustomerTotalExpense='" + this.txtTotalExpense.Text + @"'
                             where CustomerId ='" + this.txtCustomerId.Text + "';";
                     var count = this.dba.ExecuteDMLQuery(sql);
                     if (count == 1)
@@ -151,7 +151,7 @@ namespace TechShopManagement
         {
             try
             {
-                //this.txtCustomerId.Text = this.dgvAdminCustomer.CurrentRow.Cells["CustomerId"].Value.ToString();
+                this.txtCustomerId.Text = this.dgvAdminCustomer.CurrentRow.Cells["CustomerId"].Value.ToString();
                 this.txtCustomerName.Text = this.dgvAdminCustomer.CurrentRow.Cells["CustomerName"].Value.ToString();
                 this.txtCustomerAddress.Text = this.dgvAdminCustomer.CurrentRow.Cells["Address"].Value.ToString();
                 this.txtPhoneNumber.Text = this.dgvAdminCustomer.CurrentRow.Cells["PhoneNumber"].Value.ToString();
@@ -162,11 +162,12 @@ namespace TechShopManagement
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            
-            this.txtCustomerName.Clear();
-            this.txtCustomerAddress.Clear();
-            this.txtPhoneNumber.Clear();
-            this.txtTotalExpense.Clear();
+            this.txtCustomerId.Text = "";
+            this.txtCustomerName.Text = "";
+            this.txtCustomerAddress.Text = "";
+            this.txtPhoneNumber.Text = "";
+            this.txtTotalExpense.Text = "";
+            this.txtCustomerId.Text=this.GenerateAdminCustomer();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -202,6 +203,19 @@ namespace TechShopManagement
             var sql = @"select * from CustomerList where CustomerPhoneNumber like '%" + this.txtSearchCustomer.Text + "%';";
             DataSet ds = this.dba.ExecuteQuery(sql);
             this.dgvAdminCustomer.DataSource = ds.Tables[0];
+        }
+
+        private void dgvAdminCustomer_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.txtCustomerId.Text = this.dgvAdminCustomer.CurrentRow.Cells["CustomerId"].Value.ToString();
+                this.txtCustomerName.Text = this.dgvAdminCustomer.CurrentRow.Cells["CustomerName"].Value.ToString();
+                this.txtCustomerAddress.Text = this.dgvAdminCustomer.CurrentRow.Cells["Address"].Value.ToString();
+                this.txtPhoneNumber.Text = this.dgvAdminCustomer.CurrentRow.Cells["PhoneNumber"].Value.ToString();
+                this.txtTotalExpense.Text = this.dgvAdminCustomer.CurrentRow.Cells["TotalExpense"].Value.ToString();
+            }
+            catch (Exception ex) { MessageBox.Show("error: " + ex.Message); }
         }
     }
 }

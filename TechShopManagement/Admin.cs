@@ -49,7 +49,11 @@ namespace TechShopManagement
 
         private void Admin_Load(object sender, EventArgs e)
         {
-
+            ControlAdminEmployee emp = new ControlAdminEmployee();
+            panelAdmin.Controls.Add(emp);
+            emp.Dock = DockStyle.Fill;
+            emp.BringToFront();
+            emp.Show();
         }
 
         private void Admin_FormClosing(object sender, FormClosingEventArgs e)
@@ -58,7 +62,7 @@ namespace TechShopManagement
 
             if (dialogResult == DialogResult.Yes)
             {
-                this.Hide();
+                this.Dispose();
                 new Login().Show();
                 
             }
@@ -69,6 +73,15 @@ namespace TechShopManagement
 
 
 
+        }
+
+        private void revenueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Revenue rev = new Revenue();
+            panelAdmin.Controls.Add(rev);
+            rev.Dock = DockStyle.Fill;
+            rev.BringToFront();
+            rev.Show();
         }
 
         private void customerManagementToolStripMenuItem_Click(object sender, EventArgs e)

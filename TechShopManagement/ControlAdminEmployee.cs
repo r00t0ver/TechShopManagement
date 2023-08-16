@@ -68,6 +68,7 @@ namespace TechShopManagement
 
             rbFemale.Checked = false;
             rbMale.Checked = false;
+            this.GenerateEmployee();
         }
         private DataBaseAccess dba { get; set; }
         private string gender;
@@ -131,7 +132,7 @@ namespace TechShopManagement
                                         EmployeeBloodGroup='" + this.cmbEmployeeBloodGroup.Text + @"',
                                         EmployeePhoneNumber='" + this.txtEmployeePhoneNumber.Text + @"',
                                         EmployeeSalary='" + this.txtEmployeeSalary.Text + @"',
-                                        EmployeeAddress='" + this.txtEmployeeAddress.Text + @"',	                      
+                                        EmployeeAddress='" + this.txtEmployeeAddress.Text + @"'	                      
                                         where EmployeeId ='" + this.txtEmployeeId.Text + "';";
                     var count = this.dba.ExecuteDMLQuery(sql);
                     if (count == 1)
@@ -202,7 +203,7 @@ namespace TechShopManagement
         {
             try
             {
-                //this.txtEmployeeId.Text = this.dgvAdminEmployee.CurrentRow.Cells["EmployeeId"].Value.ToString();
+                this.txtEmployeeId.Text = this.dgvAdminEmployee.CurrentRow.Cells["EmployeeId"].Value.ToString();
                 this.txtPassword.Text = this.dgvAdminEmployee.CurrentRow.Cells["EmployeePassword"].Value.ToString();
                 this.txtEmployeelName.Text = this.dgvAdminEmployee.CurrentRow.Cells["EmployeeName"].Value.ToString();
                 this.cmbEmployeeRole.Text = this.dgvAdminEmployee.CurrentRow.Cells["EmployeeRole"].Value.ToString();
@@ -225,7 +226,7 @@ namespace TechShopManagement
 
         private void btnClearSelection_Click(object sender, EventArgs e)
         {
-           
+            this.txtEmployeeId.Text = "";
             this.txtPassword.Text = "";
             this.txtEmployeelName.Text = "";
             this.cmbEmployeeRole.Text = "";
@@ -239,6 +240,7 @@ namespace TechShopManagement
 
             rbFemale.Checked = false;
             rbMale.Checked = false;
+            this.txtEmployeeId.Text=this.GenerateEmployee();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)

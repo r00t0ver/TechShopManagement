@@ -8,7 +8,7 @@ namespace TechShopManagement
 {
     internal static class Program
     {
-        internal static object login;
+       
 
         /// <summary>
         /// The main entry point for the application.

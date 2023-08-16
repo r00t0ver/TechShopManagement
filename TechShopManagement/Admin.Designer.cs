@@ -34,14 +34,10 @@
             this.empId = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.graphToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.employeeManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.customerManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.revenueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dailyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.montlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.yearlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelAdmin = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -51,7 +47,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Cornsilk;
+            this.panel1.BackColor = System.Drawing.Color.DarkGray;
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -67,7 +63,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(313, 60);
+            this.panel3.Size = new System.Drawing.Size(313, 77);
             this.panel3.TabIndex = 3;
             // 
             // empName
@@ -104,7 +100,6 @@
             this.menuStrip1.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.graphToolStripMenuItem,
             this.employeeManagementToolStripMenuItem,
             this.productManagementToolStripMenuItem,
             this.customerManagementToolStripMenuItem,
@@ -114,13 +109,6 @@
             this.menuStrip1.Size = new System.Drawing.Size(1009, 60);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // graphToolStripMenuItem
-            // 
-            this.graphToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.graphToolStripMenuItem.Name = "graphToolStripMenuItem";
-            this.graphToolStripMenuItem.Size = new System.Drawing.Size(64, 56);
-            this.graphToolStripMenuItem.Text = "Home";
             // 
             // employeeManagementToolStripMenuItem
             // 
@@ -148,32 +136,11 @@
             // 
             // revenueToolStripMenuItem
             // 
-            this.revenueToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.dailyToolStripMenuItem,
-            this.montlyToolStripMenuItem,
-            this.yearlyToolStripMenuItem});
             this.revenueToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.revenueToolStripMenuItem.Name = "revenueToolStripMenuItem";
-            this.revenueToolStripMenuItem.Size = new System.Drawing.Size(82, 56);
-            this.revenueToolStripMenuItem.Text = "Revenue";
-            // 
-            // dailyToolStripMenuItem
-            // 
-            this.dailyToolStripMenuItem.Name = "dailyToolStripMenuItem";
-            this.dailyToolStripMenuItem.Size = new System.Drawing.Size(129, 26);
-            this.dailyToolStripMenuItem.Text = "Daily";
-            // 
-            // montlyToolStripMenuItem
-            // 
-            this.montlyToolStripMenuItem.Name = "montlyToolStripMenuItem";
-            this.montlyToolStripMenuItem.Size = new System.Drawing.Size(129, 26);
-            this.montlyToolStripMenuItem.Text = "Montly";
-            // 
-            // yearlyToolStripMenuItem
-            // 
-            this.yearlyToolStripMenuItem.Name = "yearlyToolStripMenuItem";
-            this.yearlyToolStripMenuItem.Size = new System.Drawing.Size(129, 26);
-            this.yearlyToolStripMenuItem.Text = "Yearly";
+            this.revenueToolStripMenuItem.Size = new System.Drawing.Size(107, 56);
+            this.revenueToolStripMenuItem.Text = "Sold History";
+            this.revenueToolStripMenuItem.Click += new System.EventHandler(this.revenueToolStripMenuItem_Click);
             // 
             // panelAdmin
             // 
@@ -212,15 +179,11 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem graphToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem employeeManagementToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem productManagementToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem customerManagementToolStripMenuItem;
         private System.Windows.Forms.Panel panelAdmin;
         private System.Windows.Forms.ToolStripMenuItem revenueToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem dailyToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem montlyToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem yearlyToolStripMenuItem;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label empName;
         private System.Windows.Forms.Label empId;

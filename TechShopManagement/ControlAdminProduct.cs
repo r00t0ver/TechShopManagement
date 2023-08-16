@@ -107,13 +107,13 @@ namespace TechShopManagement
                 if (dt.Rows.Count == 1)
                 {
                     var sql = @"update ProductList set
-	                        BrandName='" + this.txtBrandName + @"',
+	                        BrandName='" + this.txtBrandName.Text + @"',
 	                        ProductCategory='" + this.txtProductCategory.Text + @"',
 	                        ProductName='" + this.txtProductName.Text + @"',
 	                        Warranty='" + this.txtWarranty.Text + @"',
-	                        Price='" + this.txtPrice.Text + @"',',
-	                        Quantity='" + this.txtQuantity.Text + @"',',
-	                        Description='" + this.txtDescription.Text + @"',',
+	                        Price='" + this.txtPrice.Text + @"',
+	                        Quantity='" + this.txtQuantity.Text + @"',
+	                        Description='" + this.txtDescription.Text + @"'
                             where ProductId ='" + this.txtProductId.Text + "';";
                     var count = this.dba.ExecuteDMLQuery(sql);
                     if (count == 1)
@@ -151,8 +151,8 @@ namespace TechShopManagement
                String.IsNullOrEmpty(this.txtProductCategory.Text) || String.IsNullOrEmpty(this.txtProductName.Text) ||
                String.IsNullOrEmpty(this.txtWarranty.Text) ||
                String.IsNullOrEmpty(this.txtPrice.Text) ||
-               String.IsNullOrEmpty(this.txtQuantity.Text) ||
-               String.IsNullOrEmpty(this.txtDescription.Text))
+               String.IsNullOrEmpty(this.txtQuantity.Text)
+               )
             {
                 return false;
             }
@@ -199,7 +199,7 @@ namespace TechShopManagement
         {
             try
             {
-                //this.txtProductId.Text = this.dgvAdminProduct.CurrentRow.Cells["ProductId"].Value.ToString();
+                this.txtProductId.Text = this.dgvAdminProduct.CurrentRow.Cells["ProductId"].Value.ToString();
                 this.txtBrandName.Text = this.dgvAdminProduct.CurrentRow.Cells["BrandName"].Value.ToString();
                 this.txtProductCategory.Text = this.dgvAdminProduct.CurrentRow.Cells["ProductCategory"].Value.ToString();
                 this.txtProductName.Text = this.dgvAdminProduct.CurrentRow.Cells["ProductName"].Value.ToString();
@@ -214,14 +214,15 @@ namespace TechShopManagement
 
         private void btnClearField_Click(object sender, EventArgs e)
         {
-            
-            this.txtBrandName.Clear();
-            this.txtProductCategory.Clear();
-            this.txtProductName.Clear();
-            this.txtWarranty.Clear();
-            this.txtPrice.Clear();
-            this.txtQuantity.Clear();
-            this.txtDescription.Clear();
+            this.txtProductId.Text = "";  
+            this.txtBrandName.Text = "";
+            this.txtProductCategory.Text = "";
+            this.txtProductName.Text = "";
+            this.txtWarranty.Text = "";
+            this.txtPrice.Text = "";
+            this.txtQuantity.Text = "";
+            this.txtDescription.Text = "";
+            this.txtProductId.Text=this.GenerateAdminProduct();
         }
 
 

@@ -15,3 +15,4 @@ E:\CS project 2\TechShopManagement\TechShopManagement\obj\Debug\TechShopManageme
 E:\CS project 2\TechShopManagement\TechShopManagement\obj\Debug\TechShopManagement.csproj.CoreCompileInputs.cache
 E:\CS project 2\TechShopManagement\TechShopManagement\obj\Debug\TechShopManagement.exe
 E:\CS project 2\TechShopManagement\TechShopManagement\obj\Debug\TechShopManagement.pdb
+E:\CS project 2\TechShopManagement\TechShopManagement\obj\Debug\TechShopManagement.Revenue.resources

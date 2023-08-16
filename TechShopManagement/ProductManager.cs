@@ -58,14 +58,15 @@ namespace TechShopManagement
         }
         private void ClearField()
         {
-            this.txtProductId.Clear();
-            this.txtBrandName.Clear();
-            this.txtProductCategory.Clear();
-            this.txtProductName.Clear();
-            this.txtWarranty.Clear();
-            this.txtPrice.Clear();
-            this.txtQuantity.Clear();
-            this.txtDescription.Clear();
+            this.txtProductId.Text = "";
+            this.txtBrandName.Text = "";
+            this.txtProductCategory.Text = "";
+            this.txtProductName.Text = "";
+            this.txtWarranty.Text = "";
+            this.txtPrice.Text = "";
+            this.txtQuantity.Text = "";
+            this.txtDescription.Text = "";
+            this.txtProductId.Text=this.Generate();
         }
 
         private void setDefault()
@@ -236,7 +237,7 @@ namespace TechShopManagement
 
             if (dialogResult == DialogResult.Yes)
             {
-                this.Hide();
+                this.Dispose();
                 new Login().Show();
 
             }
@@ -249,14 +250,15 @@ namespace TechShopManagement
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            this.txtProductId.Clear();
-            this.txtBrandName.Clear();
-            this.txtProductCategory.Clear();
-            this.txtProductName.Clear();
-            this.txtWarranty.Clear();
-            this.txtPrice.Clear();
-            this.txtQuantity.Clear();
-            this.txtDescription.Clear();
+            this.txtProductId.Text = "";
+            this.txtBrandName.Text = "";
+            this.txtProductCategory.Text = "";
+            this.txtProductName.Text = "";
+            this.txtWarranty.Text = "";
+            this.txtPrice.Text = "";
+            this.txtQuantity.Text = "";
+            this.txtDescription.Text = "";
+            this.txtProductId.Text = this.Generate();
         }
     }
 }

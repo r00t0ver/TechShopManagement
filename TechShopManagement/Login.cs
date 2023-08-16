@@ -38,12 +38,13 @@ namespace TechShopManagement
             if(this.txtEmployeeId.Text==""||this.txtPassword.Text=="")
             {
                 MessageBox.Show("Fill All the information first");
+                return;
             }
             string id=this.txtEmployeeId.Text;
             string pass = this.txtPassword.Text;
             var sql = "select * from EmployeeList where EmployeeId='" + id + "';";
             DataSet dataSet=this.dba.ExecuteQuery(sql);
-            int count = dataSet.Tables[0].Rows.Count;   
+            int count = dataSet.Tables[0].Rows.Count;
             if(count==0) { MessageBox.Show("Account not found"); }
             else
             {
@@ -51,9 +52,9 @@ namespace TechShopManagement
                 {
                     string role = dataSet.Tables[0].Rows[0][3].ToString();
 
-                    if(role == "Admin") { new Admin(dataSet.Tables[0].Rows[0][0].ToString(), dataSet.Tables[0].Rows[0][2].ToString()).Show(); }
-                    else if(role == "Seller") {  new Seller(dataSet.Tables[0].Rows[0][0].ToString(), dataSet.Tables[0].Rows[0][2].ToString()).Show(); }
-                    else if( role =="Product Manager") { new ProductManager(dataSet.Tables[0].Rows[0][0].ToString(), dataSet.Tables[0].Rows[0][2].ToString()).Show();  }
+                    if(role == "Admin") { this.Hide(); new Admin(dataSet.Tables[0].Rows[0][0].ToString(), dataSet.Tables[0].Rows[0][2].ToString()).Show(); }
+                    else if(role == "Seller") { this.Hide(); new Seller(dataSet.Tables[0].Rows[0][0].ToString(), dataSet.Tables[0].Rows[0][2].ToString()).Show(); }
+                    else if( role =="Product Manager") {this.Hide();new ProductManager(dataSet.Tables[0].Rows[0][0].ToString(), dataSet.Tables[0].Rows[0][2].ToString()).Show(); }
                     else { MessageBox.Show("Error occur"); }
                 }
                 else
@@ -62,6 +63,21 @@ namespace TechShopManagement
                     return;
                 }
             }
+            
+            
+        }
+
+        private void Login_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Are you sure to Exit?", "Confirm", MessageBoxButtons.YesNo);
+
+            if (dialogResult == DialogResult.No)
+            {
+
+                e.Cancel = true;
+            }
+
+            
         }
     }
 }

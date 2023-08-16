@@ -30,6 +30,8 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.empName = new System.Windows.Forms.Label();
+            this.empId = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.graphToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,8 +43,6 @@
             this.montlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.yearlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelAdmin = new System.Windows.Forms.Panel();
-            this.empId = new System.Windows.Forms.Label();
-            this.empName = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -67,8 +67,28 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(313, 71);
+            this.panel3.Size = new System.Drawing.Size(313, 60);
             this.panel3.TabIndex = 3;
+            // 
+            // empName
+            // 
+            this.empName.AutoSize = true;
+            this.empName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.empName.Location = new System.Drawing.Point(23, 40);
+            this.empName.Name = "empName";
+            this.empName.Size = new System.Drawing.Size(49, 20);
+            this.empName.TabIndex = 0;
+            this.empName.Text = "name";
+            // 
+            // empId
+            // 
+            this.empId.AutoSize = true;
+            this.empId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.empId.Location = new System.Drawing.Point(23, 9);
+            this.empId.Name = "empId";
+            this.empId.Size = new System.Drawing.Size(21, 20);
+            this.empId.TabIndex = 0;
+            this.empId.Text = "id";
             // 
             // panel2
             // 
@@ -163,26 +183,6 @@
             this.panelAdmin.Size = new System.Drawing.Size(1009, 723);
             this.panelAdmin.TabIndex = 2;
             // 
-            // empId
-            // 
-            this.empId.AutoSize = true;
-            this.empId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.empId.Location = new System.Drawing.Point(23, 9);
-            this.empId.Name = "empId";
-            this.empId.Size = new System.Drawing.Size(21, 20);
-            this.empId.TabIndex = 0;
-            this.empId.Text = "id";
-            // 
-            // empName
-            // 
-            this.empName.AutoSize = true;
-            this.empName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.empName.Location = new System.Drawing.Point(23, 40);
-            this.empName.Name = "empName";
-            this.empName.Size = new System.Drawing.Size(49, 20);
-            this.empName.TabIndex = 0;
-            this.empName.Text = "name";
-            // 
             // Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -194,6 +194,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Admin";
             this.Text = "Admin";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Admin_FormClosing);
             this.Load += new System.EventHandler(this.Admin_Load);
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);

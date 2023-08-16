@@ -47,6 +47,30 @@ namespace TechShopManagement
             productManager.Show();
         }
 
+        private void Admin_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Admin_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Are you sure to Log out?", "Confirm", MessageBoxButtons.YesNo);
+
+            if (dialogResult == DialogResult.Yes)
+            {
+                this.Hide();
+                new Login().Show();
+                
+            }
+            else
+            {
+                e.Cancel = true;
+            }
+
+
+
+        }
+
         private void customerManagementToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ControlAdminCustomer customer = new ControlAdminCustomer();
@@ -56,9 +80,6 @@ namespace TechShopManagement
             customer.Show();
         }
 
-        private void Admin_Load(object sender, EventArgs e)
-        {
 
-        }
     }
 }

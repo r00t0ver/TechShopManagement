@@ -37,6 +37,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.empName = new System.Windows.Forms.Label();
+            this.empId = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
@@ -76,8 +78,6 @@
             this.labelDate = new System.Windows.Forms.Label();
             this.labelTime = new System.Windows.Forms.Label();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.empId = new System.Windows.Forms.Label();
-            this.empName = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -106,6 +106,26 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(469, 97);
             this.panel4.TabIndex = 8;
+            // 
+            // empName
+            // 
+            this.empName.AutoSize = true;
+            this.empName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.empName.Location = new System.Drawing.Point(31, 58);
+            this.empName.Name = "empName";
+            this.empName.Size = new System.Drawing.Size(125, 20);
+            this.empName.TabIndex = 0;
+            this.empName.Text = "Employee Name";
+            // 
+            // empId
+            // 
+            this.empId.AutoSize = true;
+            this.empId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.empId.Location = new System.Drawing.Point(31, 22);
+            this.empId.Name = "empId";
+            this.empId.Size = new System.Drawing.Size(97, 20);
+            this.empId.TabIndex = 0;
+            this.empId.Text = "Employee Id";
             // 
             // groupBox2
             // 
@@ -533,26 +553,6 @@
             // 
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
-            // empId
-            // 
-            this.empId.AutoSize = true;
-            this.empId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.empId.Location = new System.Drawing.Point(31, 22);
-            this.empId.Name = "empId";
-            this.empId.Size = new System.Drawing.Size(97, 20);
-            this.empId.TabIndex = 0;
-            this.empId.Text = "Employee Id";
-            // 
-            // empName
-            // 
-            this.empName.AutoSize = true;
-            this.empName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.empName.Location = new System.Drawing.Point(31, 58);
-            this.empName.Name = "empName";
-            this.empName.Size = new System.Drawing.Size(125, 20);
-            this.empName.TabIndex = 0;
-            this.empName.Text = "Employee Name";
-            // 
             // ProductManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -562,6 +562,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "ProductManager";
             this.Text = "ProductManager";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ProductManager_FormClosing);
             this.Load += new System.EventHandler(this.ProductManager_Load);
             this.panel1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);

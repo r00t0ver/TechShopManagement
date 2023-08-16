@@ -74,6 +74,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.empName = new System.Windows.Forms.Label();
+            this.empId = new System.Windows.Forms.Label();
             this.btnConfirm = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -119,8 +121,6 @@
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.empId = new System.Windows.Forms.Label();
-            this.empName = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -484,6 +484,26 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(433, 97);
             this.panel6.TabIndex = 6;
+            // 
+            // empName
+            // 
+            this.empName.AutoSize = true;
+            this.empName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.empName.Location = new System.Drawing.Point(24, 53);
+            this.empName.Name = "empName";
+            this.empName.Size = new System.Drawing.Size(125, 20);
+            this.empName.TabIndex = 0;
+            this.empName.Text = "Employee Name";
+            // 
+            // empId
+            // 
+            this.empId.AutoSize = true;
+            this.empId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.empId.Location = new System.Drawing.Point(24, 20);
+            this.empId.Name = "empId";
+            this.empId.Size = new System.Drawing.Size(97, 20);
+            this.empId.TabIndex = 0;
+            this.empId.Text = "Employee Id";
             // 
             // btnConfirm
             // 
@@ -1014,26 +1034,6 @@
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
             // 
-            // empId
-            // 
-            this.empId.AutoSize = true;
-            this.empId.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.empId.Location = new System.Drawing.Point(24, 20);
-            this.empId.Name = "empId";
-            this.empId.Size = new System.Drawing.Size(97, 20);
-            this.empId.TabIndex = 0;
-            this.empId.Text = "Employee Id";
-            // 
-            // empName
-            // 
-            this.empName.AutoSize = true;
-            this.empName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.empName.Location = new System.Drawing.Point(24, 53);
-            this.empName.Name = "empName";
-            this.empName.Size = new System.Drawing.Size(125, 20);
-            this.empName.TabIndex = 0;
-            this.empName.Text = "Employee Name";
-            // 
             // Seller
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1048,6 +1048,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "Seller";
             this.Text = "Seller";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Seller_FormClosing);
             this.Load += new System.EventHandler(this.Seller_Load);
             this.panel1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);

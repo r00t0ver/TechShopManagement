@@ -441,6 +441,23 @@ namespace TechShopManagement
 
         }
 
+        private void Seller_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Are you sure to Log out?", "Confirm", MessageBoxButtons.YesNo);
+
+            if (dialogResult == DialogResult.Yes)
+            {
+                this.Hide();
+                new Login().Show();
+
+            }
+            else
+            {
+                e.Cancel = true;
+            }
+
+        }
+
         private void txtCustomerPhoneNumber_TextChanged(object sender, EventArgs e)
         {
             var sql = @"select * from CustomerList where CustomerPhoneNumber='" + this.txtCustomerPhoneNumber.Text + "';";

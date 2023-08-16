@@ -230,6 +230,23 @@ namespace TechShopManagement
 
         }
 
+        private void ProductManager_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Are you sure to Log out?", "Confirm", MessageBoxButtons.YesNo);
+
+            if (dialogResult == DialogResult.Yes)
+            {
+                this.Hide();
+                new Login().Show();
+
+            }
+            else
+            {
+                e.Cancel = true;
+            }
+
+        }
+
         private void btnClear_Click(object sender, EventArgs e)
         {
             this.txtProductId.Clear();

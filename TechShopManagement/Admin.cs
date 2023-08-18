@@ -14,8 +14,9 @@ namespace TechShopManagement
     public partial class Admin : Form
     {
         private string id, name;
+        Login log { get; set; }
         private DataBaseAccess DBA { get; set; }
-        public Admin(string id,string name)
+        public Admin(string id,string name,Login preObj)
         {
 
             InitializeComponent();
@@ -23,7 +24,7 @@ namespace TechShopManagement
             this.name = name;
             this.empId.Text = "Employee Id : " + id;
             this.empName.Text = "Employee Name : " + name;
-
+            this.log= preObj;
         }
 
         private void employeeManagementToolStripMenuItem_Click(object sender, EventArgs e)
@@ -63,7 +64,7 @@ namespace TechShopManagement
             if (dialogResult == DialogResult.Yes)
             {
                 this.Dispose();
-                new Login().Show();
+                this.log.Show();
                 
             }
             else
@@ -84,6 +85,16 @@ namespace TechShopManagement
             rev.Show();
         }
 
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
         private void customerManagementToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ControlAdminCustomer customer = new ControlAdminCustomer();
@@ -93,6 +104,9 @@ namespace TechShopManagement
             customer.Show();
         }
 
-
+        public static implicit operator Admin(Login v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

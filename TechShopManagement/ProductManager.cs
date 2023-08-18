@@ -15,6 +15,7 @@ namespace TechShopManagement
     public partial class ProductManager : Form
     {
         private string id, name;
+        Login log { get; set; }
         private DataBaseAccess dba { set; get; }
         private string Generate()
         {
@@ -89,7 +90,7 @@ namespace TechShopManagement
             this.dgvAddingProduct.ClearSelection();
         }
 
-        public ProductManager(string id,string name)
+        public ProductManager(string id,string name, Login log)
         {
             InitializeComponent();
             setDefault();
@@ -97,10 +98,11 @@ namespace TechShopManagement
             dba = new DataBaseAccess();
             print();
             this.txtProductId.Text = this.Generate();
-            this.id= id;
-            this.name= name;
+            this.id = id;
+            this.name = name;
             this.empId.Text = "Employee Id : " + id;
             this.empName.Text = "Employee Name : " + name;
+            this.log = log;
         }
         private void watch2()
         {
@@ -238,7 +240,7 @@ namespace TechShopManagement
             if (dialogResult == DialogResult.Yes)
             {
                 this.Dispose();
-                new Login().Show();
+                 this.log.Show();
 
             }
             else

@@ -55,16 +55,16 @@ namespace TechShopManagement
                     {
                         string role = dataSet.Tables[0].Rows[0][3].ToString();
 
-                        if (role == "Admin") { this.Hide(); new Admin(dataSet.Tables[0].Rows[0][0].ToString(), dataSet.Tables[0].Rows[0][2].ToString()).Show(); }
-                        else if (role == "Seller") { this.Hide(); new Seller(dataSet.Tables[0].Rows[0][0].ToString(), dataSet.Tables[0].Rows[0][2].ToString()).Show(); }
-                        else if (role == "Product Manager") { this.Hide(); new ProductManager(dataSet.Tables[0].Rows[0][0].ToString(), dataSet.Tables[0].Rows[0][2].ToString()).Show(); }
+                        if (role == "Admin") { this.Hide(); Admin ad = new Admin(dataSet.Tables[0].Rows[0][0].ToString(), dataSet.Tables[0].Rows[0][2].ToString(), this); ;ad.ShowDialog(); }
+                        else if (role == "Seller") { this.Hide(); Seller sell= new Seller(dataSet.Tables[0].Rows[0][0].ToString(), dataSet.Tables[0].Rows[0][2].ToString(),this); sell.ShowDialog(); }
+                        else if (role == "Product Manager") { this.Hide(); ProductManager pro= new ProductManager(dataSet.Tables[0].Rows[0][0].ToString(), dataSet.Tables[0].Rows[0][2].ToString(), this); pro.ShowDialog(); }
                         else { MessageBox.Show("Error occur"); }
-                    }
+                    } 
                     else
                     {
                         MessageBox.Show("Wrong Password");
                         return;
-                    }
+                    } 
                 }
             }catch(Exception ex)
             {
@@ -94,6 +94,11 @@ namespace TechShopManagement
         {
             this.txtEmployeeId.Text = "";
             this.txtPassword.Text = "";
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -10,6 +10,7 @@ namespace TechShopManagement
     public partial class Seller : Form
     {
         private string id, name;
+        Login log {  get; set; }    
         private string GenerateCustomer()
         {
             try
@@ -154,7 +155,7 @@ namespace TechShopManagement
         }
 
 
-        public Seller(string id,string name)
+        public Seller(string id,string name, Login log)
         {
             InitializeComponent();
             this.dba = new DataBaseAccess();
@@ -168,17 +169,17 @@ namespace TechShopManagement
             this.name = name;
             this.empId.Text = "Employee Id : " + id;
             this.empName.Text = "Employee Name : " + name;
-
+            this.log = log;
         }
 
 
 
 
-/*        private void button3_Click_1(object sender, EventArgs e)
-        {
+        /*        private void button3_Click_1(object sender, EventArgs e)
+                {
 
 
-        }*/
+                }*/
 
 
 
@@ -449,7 +450,7 @@ namespace TechShopManagement
             if (dialogResult == DialogResult.Yes)
             {
                 this.Dispose();
-                new Login().Show();
+                this.log.Show();
 
             }
             else
